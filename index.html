@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naseej Emirates Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="prototype-note">
+      <span class="tag">GitHub Pages Prototype</span>
+      <h1>Naseej Emirates</h1>
+      <p>
+        Static mobile prototype based on your Streamlit idea — arranged like the Figma shots,
+        not a full working product.
+      </p>
+      <div class="legend">
+        <button class="jump-btn active" data-jump="splash">Home</button>
+        <button class="jump-btn" data-jump="signup">Sign up</button>
+        <button class="jump-btn" data-jump="otp">Sign in</button>
+        <button class="jump-btn" data-jump="app">App</button>
+      </div>
+      <p class="small-text">
+        Tip: upload these files to GitHub and enable <strong>Pages</strong> from the main branch.
+      </p>
+    </aside>
+
+    <main class="phone-stage">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="screen-stack">
+          <!-- Splash / Home -->
+          <section class="screen active" id="screen-splash">
+            <div class="pattern pattern-top-right"></div>
+            <div class="pattern pattern-bottom-left"></div>
+
+            <div class="splash-content">
+              <div class="logo-mark" aria-hidden="true">
+                <span class="flag red"></span>
+                <span class="flag green"></span>
+                <span class="flag black"></span>
+              </div>
+              <h2>Welcome to Naseej Emirates</h2>
+              <p>One Community Woven Together</p>
+            </div>
+
+            <button class="primary-pill bottom-cta" data-next="signup">
+              Join Us In Naseej Emirates
+            </button>
+          </section>
+
+          <!-- Sign up -->
+          <section class="screen" id="screen-signup">
+            <div class="pattern pattern-top-right"></div>
+            <button class="back-link" data-next="splash">&lt; Back</button>
+
+            <div class="form-card tall-card">
+              <h3>Join Us In Naseej Emirates</h3>
+
+              <label>Emirates ID</label>
+              <input type="text" placeholder="Your Emirates ID" />
+
+              <label>Full Name</label>
+              <input type="text" placeholder="Your name" />
+
+              <label>Category</label>
+              <div class="choice-row">
+                <button class="choice-btn active" type="button">Family</button>
+                <button class="choice-btn" type="button">Men</button>
+                <button class="choice-btn" type="button">Women</button>
+                <button class="choice-btn" type="button">Kids</button>
+              </div>
+
+              <button class="primary-button" data-next="otp">Verify</button>
+            </div>
+          </section>
+
+          <!-- OTP / Sign in -->
+          <section class="screen" id="screen-otp">
+            <div class="pattern pattern-top-right"></div>
+
+            <div class="form-card tall-card otp-card">
+              <h3>Verify ID</h3>
+              <p class="otp-sub">OTP</p>
+              <div class="otp-row">
+                <input maxlength="1" inputmode="numeric" value="1" />
+                <input maxlength="1" inputmode="numeric" value="1" />
+                <input maxlength="1" inputmode="numeric" value="1" />
+                <input maxlength="1" inputmode="numeric" value="1" />
+                <input maxlength="1" inputmode="numeric" value="1" />
+                <input maxlength="1" inputmode="numeric" value="1" />
+              </div>
+              <button class="primary-button" data-next="app">Login</button>
+            </div>
+          </section>
+
+          <!-- Main app -->
+          <section class="screen" id="screen-app">
+            <div class="app-bg">
+              <div class="arc arc-1"></div>
+              <div class="arc arc-2"></div>
+              <div class="arc arc-3"></div>
+            </div>
+
+            <header class="top-row">
+              <div>
+                <p class="tiny-label">Prototype</p>
+                <h3>Naseej Emirates</h3>
+              </div>
+              <button class="bot-btn" id="open-chat" aria-label="Open Humaid AI">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <rect x="12" y="18" width="40" height="28" rx="12"></rect>
+                  <circle cx="24" cy="32" r="4" class="eye"></circle>
+                  <circle cx="40" cy="32" r="4" class="eye"></circle>
+                  <path d="M24 41c2 2 4.8 3 8 3s6-1 8-3" fill="none"></path>
+                  <path d="M32 10v8"></path>
+                  <circle cx="32" cy="8" r="5" fill="none"></circle>
+                  <path d="M12 31H7"></path>
+                  <path d="M57 31h-5"></path>
+                </svg>
+              </button>
+            </header>
+
+            <div class="page-slider">
+              <!-- Feed -->
+              <div class="app-page active" data-page="home">
+                <div class="hero-card">
+                  <span class="mini-chip">Community</span>
+                  <h4>Discover community events near you</h4>
+                  <p>Prototype view only — cards and flow for presentation.</p>
+                </div>
+
+                <div class="search-pill">
+                  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+                  <span>Search events, places, categories…</span>
+                </div>
+
+                <div class="content-list">
+                  <article class="event-card">
+                    <div class="event-top">
+                      <span class="pill">Family</span>
+                      <span class="pill muted">Sharjah</span>
+                    </div>
+                    <h5>Family Park Picnic</h5>
+                    <p>Al Majaz Park • 12 Jan • 5:30 PM</p>
+                    <div class="event-actions">
+                      <button>Join</button>
+                      <button class="ghost">Directions</button>
+                    </div>
+                  </article>
+
+                  <article class="event-card">
+                    <div class="event-top">
+                      <span class="pill">Kids</span>
+                      <span class="pill muted">Waterfront</span>
+                    </div>
+                    <h5>Kids Workshop</h5>
+                    <p>Art & Colors • 20 Jan • 4:00 PM</p>
+                    <div class="event-actions">
+                      <button>View</button>
+                      <button class="ghost">Driver</button>
+                    </div>
+                  </article>
+                </div>
+              </div>
+
+              <!-- Search / Explore -->
+              <div class="app-page" data-page="search">
+                <div class="sub-header">
+                  <h4>Explore Map</h4>
+                  <p>Map screen prototype</p>
+                </div>
+                <div class="map-placeholder">
+                  <div class="map-grid"></div>
+                  <div class="map-pin pin-1"></div>
+                  <div class="map-pin pin-2"></div>
+                  <div class="map-pin pin-3"></div>
+                  <div class="map-overlay-card">
+                    <strong>Beach Clean-up</strong>
+                    <span>Al Khan Beach</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Create -->
+              <div class="app-page" data-page="create">
+                <div class="sub-header">
+                  <h4>Create Event</h4>
+                  <p>Simple prototype layout, no backend logic.</p>
+                </div>
+                <div class="sheet-card">
+                  <label>Event Title</label>
+                  <input type="text" placeholder="Neighborhood Gathering" />
+
+                  <label>Category</label>
+                  <div class="choice-row compact">
+                    <button class="choice-btn active" type="button">Family</button>
+                    <button class="choice-btn" type="button">Men</button>
+                    <button class="choice-btn" type="button">Women</button>
+                  </div>
+
+                  <label>Location</label>
+                  <input type="text" placeholder="Al Majaz Park" />
+
+                  <label>Description</label>
+                  <textarea placeholder="Short description"></textarea>
+
+                  <button class="primary-button">Publish Event</button>
+                </div>
+              </div>
+
+              <!-- Friends -->
+              <div class="app-page" data-page="friends">
+                <div class="sub-header">
+                  <h4>Friends</h4>
+                  <p>Invite and chat flow</p>
+                </div>
+                <div class="friend-card">
+                  <div class="avatar">A</div>
+                  <div>
+                    <strong>Ahmed</strong>
+                    <p>Invite to Family Park Picnic</p>
+                  </div>
+                  <button class="ghost small">Invite</button>
+                </div>
+                <div class="chat-bubble from-them">Are you coming today?</div>
+                <div class="chat-bubble from-me">Yes, I’ll be there after Maghrib.</div>
+                <div class="message-box">
+                  <input type="text" placeholder="Type a message…" />
+                  <button>Send</button>
+                </div>
+              </div>
+
+              <!-- Profile -->
+              <div class="app-page" data-page="profile">
+                <div class="profile-top">
+                  <div class="avatar large">NU</div>
+                  <div>
+                    <h4>Nasser User</h4>
+                    <p>Designing for connection</p>
+                  </div>
+                  <div class="profile-actions">
+                    <button id="open-settings" class="icon-square">⚙️</button>
+                    <button id="open-rewards" class="icon-square">🎁</button>
+                  </div>
+                </div>
+
+                <div class="stats-grid">
+                  <div><strong>120</strong><span>Points</span></div>
+                  <div><strong>03</strong><span>Joined</span></div>
+                  <div><strong>01</strong><span>Created</span></div>
+                </div>
+
+                <div class="sheet-card compact-space">
+                  <h5>Badges</h5>
+                  <div class="pill-row">
+                    <span class="pill">Starter</span>
+                    <span class="pill">Helper</span>
+                    <span class="pill">Organizer</span>
+                  </div>
+                </div>
+
+                <div class="sheet-card compact-space">
+                  <h5>Joined Events</h5>
+                  <ul class="mini-list">
+                    <li>Beach Clean-up</li>
+                    <li>Family Park Picnic</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <nav class="bottom-nav">
+              <button class="nav-item active" data-page-target="home" aria-label="Home">
+                <svg viewBox="0 0 24 24"><path d="M4 10.5L12 4l8 6.5V20H4z"></path><path d="M9.5 20v-5h5v5"></path></svg>
+              </button>
+              <button class="nav-item" data-page-target="search" aria-label="Search">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+              </button>
+              <button class="nav-item nav-add" data-page-target="create" aria-label="Create">
+                <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect><path d="M12 7v10"></path><path d="M7 12h10"></path></svg>
+              </button>
+              <button class="nav-item" data-page-target="friends" aria-label="Friends">
+                <svg viewBox="0 0 24 24"><path d="M9 12a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"></path><path d="M17 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path><path d="M3.5 19c1-3 3.6-4.5 6.5-4.5S15.5 16 16.5 19"></path><path d="M14.5 18.8c.7-1.8 2-2.8 4-3"></path></svg>
+              </button>
+              <button class="nav-item" data-page-target="profile" aria-label="Profile">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M5 20c1.5-4 4.2-6 7-6s5.5 2 7 6"></path></svg>
+              </button>
+            </nav>
+          </section>
+
+          <!-- Humaid AI overlay -->
+          <section class="screen chat-overlay" id="screen-chat">
+            <div class="sub-header chat-head">
+              <button class="back-round" data-next="app">←</button>
+              <div>
+                <h4>Humaid AI</h4>
+                <p>Smart demo helper</p>
+              </div>
+            </div>
+
+            <div class="chat-area">
+              <div class="chat-bubble from-them">Try: “Suggest family events”</div>
+              <div class="chat-bubble from-me">What can I join?</div>
+              <div class="chat-bubble from-them">You can join Family Park Picnic and Beach Clean-up.</div>
+            </div>
+
+            <div class="message-box sticky-box">
+              <input type="text" placeholder="Ask Humaid…" />
+              <button>Send</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Bottom sheets -->
+  <div class="sheet-backdrop" id="settings-sheet">
+    <div class="bottom-sheet">
+      <div class="sheet-grab"></div>
+      <div class="sub-header tight">
+        <h4>Settings</h4>
+        <button class="sheet-close" data-close="settings-sheet">✕</button>
+      </div>
+      <div class="sheet-card compact-space">
+        <label>Language</label>
+        <div class="choice-row compact">
+          <button class="choice-btn active" type="button">English</button>
+          <button class="choice-btn" type="button">العربية</button>
+        </div>
+        <label>Map Style</label>
+        <div class="choice-row compact">
+          <button class="choice-btn active" type="button">Dark</button>
+          <button class="choice-btn" type="button">Light</button>
+        </div>
+        <button class="primary-button slim">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-backdrop" id="rewards-sheet">
+    <div class="bottom-sheet">
+      <div class="sheet-grab"></div>
+      <div class="sub-header tight">
+        <h4>Rewards</h4>
+        <button class="sheet-close" data-close="rewards-sheet">✕</button>
+      </div>
+      <div class="reward-list">
+        <article class="reward-card">
+          <div>
+            <strong>Coffee Voucher</strong>
+            <p>Cost: 60 points</p>
+          </div>
+          <button>Buy</button>
+        </article>
+        <article class="reward-card">
+          <div>
+            <strong>Event Ticket</strong>
+            <p>Cost: 120 points</p>
+          </div>
+          <button>Buy</button>
+        </article>
+        <article class="reward-card">
+          <div>
+            <strong>Premium Badge</strong>
+            <p>Cost: 200 points</p>
+          </div>
+          <button class="ghost">Locked</button>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
