@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naseej Emirates — iOS Competition Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="workspace">
+    <aside class="pitch-panel">
+      <span class="pitch-tag">iOS Competition Prototype</span>
+      <h1>Naseej Emirates</h1>
+      <p>
+        High-fidelity clickable prototype for GitHub Pages — styled like a real iPhone app,
+        with the main flows from your project kept as demo interactions instead of a heavy product build.
+      </p>
+
+      <div class="pitch-block">
+        <h2>Why this version is stronger</h2>
+        <ul>
+          <li>Looks closer to an actual iOS competition demo, not a raw web page.</li>
+          <li>Covers your important flows: onboarding, feed, map, create, friends, profile, Humaid AI, rewards, settings, and driver request.</li>
+          <li>Uses mock logic and local storage so it still stays a prototype, not a full production model.</li>
+        </ul>
+      </div>
+
+      <div class="pitch-block">
+        <h2>Quick screens</h2>
+        <div class="screen-jumps">
+          <button class="jump-btn active" data-screen="splash">Splash</button>
+          <button class="jump-btn" data-screen="terms">Terms</button>
+          <button class="jump-btn" data-screen="signup">Sign up</button>
+          <button class="jump-btn" data-screen="otp">OTP</button>
+          <button class="jump-btn" data-screen="app">App</button>
+        </div>
+      </div>
+
+      <div class="pitch-block compact">
+        <h2>Best way to present it</h2>
+        <p>
+          Start from Splash → Terms → Sign up → OTP, then show Feed, Map, Create, Friends, Profile,
+          and finish with Humaid AI + Rewards. That flow feels much stronger in a judged demo.
+        </p>
+      </div>
+    </aside>
+
+    <main class="phone-stage">
+      <div class="iphone">
+        <div class="dynamic-island"></div>
+        <div class="screen-shell">
+          <div class="status-bar">
+            <span>9:41</span>
+            <div class="status-icons">
+              <span></span><span></span><span class="battery"></span>
+            </div>
+          </div>
+
+          <section class="screen active" id="screen-splash">
+            <div class="ornament ornament-top"></div>
+            <div class="ornament ornament-bottom"></div>
+            <div class="center-stack splash-stack">
+              <div class="brand-mark" aria-hidden="true">
+                <span class="stroke red"></span>
+                <span class="stroke green"></span>
+                <span class="stroke black"></span>
+              </div>
+              <h2>Welcome to Naseej Emirates</h2>
+              <p>One Community Woven Together</p>
+            </div>
+            <button class="cta-curved" data-next-screen="terms">Join Us In Naseej Emirates</button>
+          </section>
+
+          <section class="screen" id="screen-terms">
+            <div class="ornament ornament-top small"></div>
+            <div class="screen-content scrollable onboarding-gap">
+              <div class="header-block left">
+                <span class="eyebrow">Before you continue</span>
+                <h3>Terms of Service</h3>
+                <p>Prototype only — safe for presentation, no real Emirates ID verification.</p>
+              </div>
+
+              <article class="glass-card terms-card">
+                <h4>What this demo does</h4>
+                <ul class="plain-list">
+                  <li>Shows the community event experience for UAE audiences.</li>
+                  <li>Uses demo sign-up, OTP, points, rewards, and social flows.</li>
+                  <li>Simulates event rules like family, men, women, kids, and 18+ access.</li>
+                  <li>Stores only demo interactions in your browser for presentation.</li>
+                </ul>
+              </article>
+
+              <label class="check-row">
+                <input type="checkbox" id="terms-check" />
+                <span>I accept the terms for this prototype demo.</span>
+              </label>
+
+              <div class="dual-actions sticky-actions">
+                <button class="secondary-btn" data-next-screen="splash">Back</button>
+                <button class="primary-btn" id="terms-continue" disabled>Continue</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="screen" id="screen-signup">
+            <div class="ornament ornament-top small"></div>
+            <button class="text-back" data-next-screen="terms">&lt; Back</button>
+            <div class="sheet-panel tall">
+              <h3>Join Us In Naseej Emirates</h3>
+              <div class="stack-form">
+                <label>Emirates ID</label>
+                <input id="signup-eid" type="text" placeholder="Your Emirates ID" />
+
+                <label>Full Name</label>
+                <input id="signup-name" type="text" placeholder="Your name" />
+
+                <div class="split-row two">
+                  <div>
+                    <label>Gender</label>
+                    <div class="chip-group" data-group="gender">
+                      <button class="chip-btn active" type="button" data-value="Male">Male</button>
+                      <button class="chip-btn" type="button" data-value="Female">Female</button>
+                    </div>
+                  </div>
+                  <div>
+                    <label>Age</label>
+                    <input id="signup-age" type="number" min="1" max="99" value="22" />
+                  </div>
+                </div>
+
+                <label>Interest</label>
+                <div class="chip-group wrap" data-group="interest">
+                  <button class="chip-btn active" type="button" data-value="Family">Family</button>
+                  <button class="chip-btn" type="button" data-value="Men">Men</button>
+                  <button class="chip-btn" type="button" data-value="Women">Women</button>
+                  <button class="chip-btn" type="button" data-value="Kids">Kids</button>
+                </div>
+
+                <p class="helper-text">Gender and age are fixed for the demo to show event access rules.</p>
+                <button class="primary-btn wide" id="signup-verify">Verify</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="screen" id="screen-otp">
+            <div class="ornament ornament-top small"></div>
+            <div class="sheet-panel tall centered-sheet otp-sheet">
+              <h3>Verify ID</h3>
+              <p class="otp-label">OTP</p>
+              <div class="otp-grid">
+                <input maxlength="1" inputmode="numeric" value="1" />
+                <input maxlength="1" inputmode="numeric" value="1" />
+                <input maxlength="1" inputmode="numeric" value="1" />
+                <input maxlength="1" inputmode="numeric" value="1" />
+                <input maxlength="1" inputmode="numeric" value="1" />
+                <input maxlength="1" inputmode="numeric" value="1" />
+              </div>
+              <p class="helper-text centered">Demo OTP screen for presentation flow.</p>
+              <button class="primary-btn wide" id="otp-login">Login</button>
+            </div>
+          </section>
+
+          <section class="screen app-screen" id="screen-app">
+            <div class="app-background">
+              <div class="arc arc-a"></div>
+              <div class="arc arc-b"></div>
+              <div class="arc arc-c"></div>
+            </div>
+
+            <div class="app-topbar">
+              <div>
+                <p class="eyebrow">Prototype</p>
+                <h3 id="app-title">Naseej Emirates</h3>
+              </div>
+              <button class="humaid-fab" id="open-humaid" aria-label="Open Humaid AI">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <rect x="12" y="18" width="40" height="28" rx="12"></rect>
+                  <circle cx="24" cy="32" r="4" class="eye"></circle>
+                  <circle cx="40" cy="32" r="4" class="eye"></circle>
+                  <path d="M24 41c2 2 4.8 3 8 3s6-1 8-3" fill="none"></path>
+                  <path d="M32 10v8"></path>
+                  <circle cx="32" cy="8" r="5" fill="none"></circle>
+                  <path d="M12 31H7"></path>
+                  <path d="M57 31h-5"></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="app-pages">
+              <div class="app-page active" data-page="feed">
+                <div class="hero-card featured-card">
+                  <div class="hero-copy">
+                    <span class="mini-tag">Smart matching</span>
+                    <h4>Discover meaningful community events around you</h4>
+                    <p>Family, Men, Women, and Kids experiences designed for a respectful UAE-first social space.</p>
+                  </div>
+                  <div class="hero-metrics">
+                    <div><strong id="hero-points">120</strong><span>Points</span></div>
+                    <div><strong>04</strong><span>Categories</span></div>
+                  </div>
+                </div>
+
+                <div class="search-bar">
+                  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+                  <input id="feed-search" type="text" placeholder="Search title, place, date, category…" />
+                </div>
+
+                <div class="filter-row" id="category-filters"></div>
+                <div class="card-stack" id="feed-events"></div>
+              </div>
+
+              <div class="app-page" data-page="map">
+                <div class="section-head">
+                  <h4>Map</h4>
+                  <p>Event discovery with visual location pins.</p>
+                </div>
+                <div class="map-card">
+                  <div class="map-grid"></div>
+                  <div class="map-pin pin-1" data-event-id="ev1"></div>
+                  <div class="map-pin pin-2" data-event-id="ev2"></div>
+                  <div class="map-pin pin-3" data-event-id="ev3"></div>
+                  <div class="map-pin pin-4" data-event-id="ev4"></div>
+                  <div class="map-preview" id="map-preview">
+                    <strong>Beach Clean-up</strong>
+                    <span>Al Khan Beach • 10 Jan • 8:00 AM</span>
+                  </div>
+                </div>
+                <div class="mini-panel" id="map-event-list"></div>
+              </div>
+
+              <div class="app-page" data-page="create">
+                <div class="section-head">
+                  <h4>Create Event</h4>
+                  <p>Demo flow for publishing and earning reward points.</p>
+                </div>
+                <div class="form-card-soft">
+                  <label>Event Title</label>
+                  <input id="create-title" type="text" placeholder="Neighborhood Gathering" />
+
+                  <label>Category</label>
+                  <div class="chip-group wrap" data-group="create-category">
+                    <button class="chip-btn active" type="button" data-value="family">Family</button>
+                    <button class="chip-btn" type="button" data-value="men">Men</button>
+                    <button class="chip-btn" type="button" data-value="women">Women</button>
+                    <button class="chip-btn" type="button" data-value="kids">Kids</button>
+                  </div>
+
+                  <div class="split-row two">
+                    <div>
+                      <label>Date</label>
+                      <input id="create-date" type="text" placeholder="15 Jan 2026" />
+                    </div>
+                    <div>
+                      <label>Time</label>
+                      <input id="create-time" type="text" placeholder="6:30 PM" />
+                    </div>
+                  </div>
+
+                  <label>Location</label>
+                  <input id="create-location" type="text" placeholder="Al Majaz Park" />
+
+                  <label>Description</label>
+                  <textarea id="create-description" placeholder="Short description for the event."></textarea>
+
+                  <div class="mini-map-preview">
+                    <div class="mini-map-pin"></div>
+                    <span>Live preview placeholder for coordinates / map card</span>
+                  </div>
+
+                  <button class="primary-btn wide" id="publish-event">Publish Event</button>
+                </div>
+              </div>
+
+              <div class="app-page" data-page="friends">
+                <div class="section-head">
+                  <h4>Friends</h4>
+                  <p>Invite by name, message, and share events.</p>
+                </div>
+
+                <div class="glass-card">
+                  <label>Add friend by name</label>
+                  <div class="search-bar smaller">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+                    <input id="friend-search" type="text" placeholder="Ahmed / Maryam" />
+                  </div>
+                  <div id="friend-search-results" class="result-list"></div>
+                </div>
+
+                <div class="glass-card friend-chat-card">
+                  <div class="friend-row">
+                    <div class="avatar-badge">A</div>
+                    <div>
+                      <strong>Ahmed</strong>
+                      <p>Invite to Family Park Picnic</p>
+                    </div>
+                    <button class="ghost-btn small" id="send-invite">Invite</button>
+                  </div>
+                  <div class="chat-stream" id="friend-chat"></div>
+                  <div class="message-composer">
+                    <input id="friend-message" type="text" placeholder="Type a message…" />
+                    <button class="primary-mini" id="send-friend-message">Send</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="app-page" data-page="profile">
+                <div class="profile-card">
+                  <div class="profile-main">
+                    <div class="avatar-large" id="profile-avatar">NU</div>
+                    <div>
+                      <h4 id="profile-name">Nasser User</h4>
+                      <p id="profile-bio">Designing for connection and community.</p>
+                    </div>
+                  </div>
+                  <div class="profile-icons">
+                    <button class="icon-box" id="open-settings">⚙️</button>
+                    <button class="icon-box" id="open-rewards">🎁</button>
+                  </div>
+                </div>
+
+                <div class="stats-grid four" id="profile-stats"></div>
+
+                <div class="glass-card">
+                  <h5>Badges</h5>
+                  <div class="badge-row" id="badge-row"></div>
+                </div>
+
+                <div class="glass-card">
+                  <h5>Joined Events</h5>
+                  <div class="mini-list" id="joined-list"></div>
+                </div>
+
+                <div class="glass-card">
+                  <h5>Driver Requests</h5>
+                  <div class="mini-list" id="rides-list"></div>
+                </div>
+              </div>
+            </div>
+
+            <nav class="tabbar">
+              <button class="tab-item active" data-page-target="feed" aria-label="Feed">
+                <svg viewBox="0 0 24 24"><path d="M4 10.5L12 4l8 6.5V20H4z"></path><path d="M9.5 20v-5h5v5"></path></svg>
+              </button>
+              <button class="tab-item" data-page-target="map" aria-label="Map">
+                <svg viewBox="0 0 24 24"><path d="M4 6l5-2 6 2 5-2v14l-5 2-6-2-5 2z"></path><path d="M9 4v14"></path><path d="M15 6v14"></path></svg>
+              </button>
+              <button class="tab-item add" data-page-target="create" aria-label="Create">
+                <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect><path d="M12 7v10"></path><path d="M7 12h10"></path></svg>
+              </button>
+              <button class="tab-item" data-page-target="friends" aria-label="Friends">
+                <svg viewBox="0 0 24 24"><path d="M9 12a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"></path><path d="M17 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path><path d="M3.5 19c1-3 3.6-4.5 6.5-4.5S15.5 16 16.5 19"></path><path d="M14.5 18.8c.7-1.8 2-2.8 4-3"></path></svg>
+              </button>
+              <button class="tab-item" data-page-target="profile" aria-label="Profile">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M5 20c1.5-4 4.2-6 7-6s5.5 2 7 6"></path></svg>
+              </button>
+            </nav>
+          </section>
+
+          <section class="screen chat-screen" id="screen-chat">
+            <div class="app-background subdued">
+              <div class="arc arc-a"></div>
+              <div class="arc arc-b"></div>
+            </div>
+            <div class="chat-header">
+              <button class="back-circle" data-next-screen="app">←</button>
+              <div>
+                <h4>Humaid AI</h4>
+                <p>Smart demo assistant</p>
+              </div>
+            </div>
+            <div class="chat-log" id="humaid-chat-log"></div>
+            <div class="message-composer sticky-composer">
+              <input id="humaid-input" type="text" placeholder="Ask Humaid about events, rules, or suggestions…" />
+              <button class="primary-mini" id="send-humaid">Send</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="sheet-backdrop" id="event-sheet">
+    <div class="bottom-sheet">
+      <div class="grab"></div>
+      <div class="sheet-heading">
+        <h4 id="sheet-event-title">Event details</h4>
+        <button class="close-sheet" data-close-sheet="event-sheet">✕</button>
+      </div>
+      <div class="sheet-body" id="event-sheet-body"></div>
+    </div>
+  </div>
+
+  <div class="sheet-backdrop" id="settings-sheet">
+    <div class="bottom-sheet">
+      <div class="grab"></div>
+      <div class="sheet-heading">
+        <h4>Settings</h4>
+        <button class="close-sheet" data-close-sheet="settings-sheet">✕</button>
+      </div>
+      <div class="sheet-body stacked">
+        <div class="glass-card sheet-inner">
+          <label>Language</label>
+          <div class="chip-group" data-group="language">
+            <button class="chip-btn active" type="button" data-value="en">English</button>
+            <button class="chip-btn" type="button" data-value="ar">العربية</button>
+          </div>
+
+          <label>Map Style</label>
+          <div class="chip-group" data-group="mapstyle">
+            <button class="chip-btn active" type="button" data-value="dark">Dark</button>
+            <button class="chip-btn" type="button" data-value="light">Light</button>
+          </div>
+
+          <button class="primary-btn wide" id="save-settings">Save Changes</button>
+          <button class="secondary-btn wide" id="reset-demo">Reset Demo Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-backdrop" id="rewards-sheet">
+    <div class="bottom-sheet">
+      <div class="grab"></div>
+      <div class="sheet-heading">
+        <h4>Rewards Store</h4>
+        <button class="close-sheet" data-close-sheet="rewards-sheet">✕</button>
+      </div>
+      <div class="sheet-body stacked">
+        <div class="reward-header glass-card">
+          <strong id="reward-points">120</strong>
+          <span>Available Points</span>
+        </div>
+        <div id="reward-list" class="reward-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

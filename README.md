@@ -1,35 +1,35 @@
-# Naseej Emirates Prototype
+# Naseej Emirates — iOS Competition Prototype
 
-هذا بروتوتايب ثابت (Static Prototype) حق GitHub Pages، مب نموذج عمل كامل.
+This is a **high-fidelity clickable prototype** built for **GitHub Pages**.
+It is designed to look and feel closer to an **iOS competition demo** rather than a full production app.
 
-## الملفات
+## Included prototype flows
+- Splash / welcome screen
+- Terms screen
+- Sign up screen
+- OTP verification screen
+- Feed with event cards and category filters
+- Map screen with event pins
+- Create event flow
+- Friends invite + chat demo
+- Profile with badges, joined events, and driver requests
+- Humaid AI demo chat
+- Rewards bottom sheet
+- Settings bottom sheet
+
+## Important
+This is still a **prototype**, not a real backend app.
+It uses mock data and browser local storage only.
+
+## GitHub Pages setup
+1. Upload all files to a GitHub repository.
+2. Go to **Settings** → **Pages**.
+3. Under **Build and deployment**, choose **Deploy from a branch**.
+4. Select the main branch and root folder.
+5. Save, then open the generated Pages link.
+
+## Files
 - `index.html`
 - `styles.css`
 - `script.js`
 
-## كيف ترفعه على GitHub
-1. سوِّ Repository جديد.
-2. ارفع الثلاث ملفات داخل الريبو.
-3. ادخل **Settings > Pages**.
-4. اختَر **Deploy from a branch**.
-5. اختَر فرع `main` ومجلد `/root`.
-6. احفظ، وبعدين بينزل لك رابط البروتوتايب.
-
-## شو فيه
-- Home / Splash
-- Sign up
-- OTP / Sign in
-- Main mobile app shell
-- Bottom nav مثل التصميم
-- Feed / Map / Create / Friends / Profile
-- Humaid AI overlay
-- Settings + Rewards bottom sheets
-
-## مهم
-هذا البروتوتايب للعرض والتقديم فقط:
-- ما فيه backend
-- ما فيه تخزين بيانات حقيقي
-- ما فيه تحقق Emirates ID فعلي
-- ما فيه Streamlit
-
-يعني مناسب حق العرض في GitHub أو كمرحلة قبل التطوير الفعلي.
