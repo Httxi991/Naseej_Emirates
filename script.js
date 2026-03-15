@@ -1,26 +1,37 @@
-const STORAGE_KEY = 'naseej-ios-prototype-v2';
+const STORAGE_KEY = 'naseej-ios-prototype-final';
 
 const LINKED_IDENTITIES = {
   '784-1990-1234567-1': {
-    name: 'Nasser User',
     eid: '784-1990-1234567-1',
+    name: 'Nasser',
     gender: 'Male',
     age: 22,
     bioEn: 'Designing for connection and community.',
-    bioAr: 'أصمم من أجل الترابط والمجتمع.',
+    bioAr: 'أصمم من أجل الترابط وخدمة المجتمع.',
     points: 120,
     badges: ['Starter', 'Helper'],
     joinedEventIds: ['ev2']
   },
+  '784-1992-7654321-2': {
+    eid: '784-1992-7654321-2',
+    name: 'Ahmed',
+    gender: 'Male',
+    age: 27,
+    bioEn: 'Volunteering makes a stronger UAE.',
+    bioAr: 'التطوع يصنع مجتمعًا إماراتيًا أقوى.',
+    points: 240,
+    badges: ['Volunteer'],
+    joinedEventIds: ['ev1', 'ev3']
+  },
   '784-1995-5555555-3': {
-    name: 'Maryam Ali',
     eid: '784-1995-5555555-3',
+    name: 'Maryam',
     gender: 'Female',
     age: 24,
     bioEn: 'Culture connects generations.',
-    bioAr: 'الثقافة تربط الأجيال.',
-    points: 140,
-    badges: ['Starter', 'Culture Lover'],
+    bioAr: 'الثقافة تصل بين الأجيال.',
+    points: 310,
+    badges: ['Culture Lover', 'Organizer'],
     joinedEventIds: ['ev4']
   }
 };
@@ -30,13 +41,13 @@ const BASE_EVENTS = [
     id: 'ev1',
     title: 'Beach Clean-up',
     category: 'family',
+    description: 'A light volunteering activity open to the whole community.',
     place: 'Al Khan Beach',
+    date: '2026-01-10',
+    time: '08:00 AM',
+    host: 'Ahmed',
     city: 'Sharjah',
-    date: '10 Jan 2026',
-    time: '8:00 AM',
     minAge: 0,
-    gender: 'all',
-    description: 'A light volunteering activity for the whole community.',
     lat: 25.3226,
     lon: 55.3522
   },
@@ -44,13 +55,13 @@ const BASE_EVENTS = [
     id: 'ev2',
     title: 'Family Park Picnic',
     category: 'family',
+    description: 'Bring your family for games, food, and shared moments.',
     place: 'Al Majaz Park',
+    date: '2026-01-12',
+    time: '05:30 PM',
+    host: 'Maryam',
     city: 'Sharjah',
-    date: '12 Jan 2026',
-    time: '5:30 PM',
     minAge: 0,
-    gender: 'all',
-    description: 'Games, food, and shared moments for families and friends.',
     lat: 25.3338,
     lon: 55.3846
   },
@@ -58,13 +69,13 @@ const BASE_EVENTS = [
     id: 'ev3',
     title: 'Men Majlis',
     category: 'men',
+    description: 'A men-only community talk with respectful discussion space.',
     place: 'Heart of Sharjah',
+    date: '2026-01-15',
+    time: '07:30 PM',
+    host: 'Ahmed',
     city: 'Sharjah',
-    date: '15 Jan 2026',
-    time: '7:30 PM',
     minAge: 18,
-    gender: 'Male',
-    description: 'Men-only community talk with respectful discussion space.',
     lat: 25.3573,
     lon: 55.3906
   },
@@ -72,13 +83,13 @@ const BASE_EVENTS = [
     id: 'ev4',
     title: 'Women Wellness Session',
     category: 'women',
+    description: 'Women-only wellness session with privacy-first community support.',
     place: 'Corniche',
+    date: '2026-01-18',
+    time: '06:45 AM',
+    host: 'Maryam',
     city: 'Sharjah',
-    date: '18 Jan 2026',
-    time: '6:45 AM',
     minAge: 18,
-    gender: 'Female',
-    description: 'Women-only wellness session with privacy-first flow.',
     lat: 25.3436,
     lon: 55.3940
   },
@@ -86,13 +97,13 @@ const BASE_EVENTS = [
     id: 'ev5',
     title: 'Kids Art Workshop',
     category: 'kids',
-    place: 'Al Majaz Waterfront',
-    city: 'Sharjah',
-    date: '20 Jan 2026',
-    time: '4:00 PM',
-    minAge: 0,
-    gender: 'all',
     description: 'Creative art activities for children with guardian support.',
+    place: 'Al Majaz Waterfront',
+    date: '2026-01-20',
+    time: '04:00 PM',
+    host: 'Maryam',
+    city: 'Sharjah',
+    minAge: 0,
     lat: 25.3349,
     lon: 55.3832
   }
@@ -109,7 +120,7 @@ const REWARDS = [
     id: 'rw2',
     cost: 120,
     title: { en: 'Special Event Ticket', ar: 'تذكرة فعالية خاصة' },
-    description: { en: 'Demo ticket for a featured event.', ar: 'تذكرة تجريبية لفعالية مميزة.' }
+    description: { en: 'Demo ticket for a featured community event.', ar: 'تذكرة تجريبية لفعالية مجتمعية مميزة.' }
   },
   {
     id: 'rw3',
@@ -120,147 +131,347 @@ const REWARDS = [
 ];
 
 const FRIEND_POOL = [
-  { id: 'f1', name: 'Ahmed', avatar: 'A' },
-  { id: 'f2', name: 'Maryam', avatar: 'M' },
-  { id: 'f3', name: 'Salem', avatar: 'S' },
-  { id: 'f4', name: 'Noora', avatar: 'N' }
+  { id: 'f1', name: 'Ahmed', subtitle: 'Volunteer friend', avatar: 'A' },
+  { id: 'f2', name: 'Maryam', subtitle: 'Culture friend', avatar: 'M' },
+  { id: 'f3', name: 'Noora', subtitle: 'Family events', avatar: 'N' },
+  { id: 'f4', name: 'Salem', subtitle: 'Majlis friend', avatar: 'S' }
 ];
 
-const UI = {
+const COPY = {
   en: {
-    feedTitle: 'Naseej Emirates',
-    searchPlaceholder: 'Search title, place, date, category…',
+    welcomeTitle: 'Welcome to Naseej Emirates',
+    welcomeSub: 'One Community Woven Together',
+    joinUs: 'Join Us In Naseej Emirates',
+    back: 'Back',
+    beforeContinue: 'Before you continue',
+    termsTitle: 'Terms of Service',
+    termsSub: 'This is a judged prototype. It demonstrates the concept only, not real identity verification.',
+    termsInside: 'What this prototype includes',
+    termsItem1: 'Digital identity sign in concept with OTP confirmation.',
+    termsItem2: 'Community event discovery with family, men, women, and kids categories.',
+    termsItem3: 'Access rules, driver request, rewards, settings, and friends chat flow.',
+    termsItem4: 'Humaid AI as an in-app conversation assistant.',
+    termsAccept: 'I accept the prototype terms.',
+    continue: 'Continue',
+    signinTitle: 'Sign in with Digital ID',
+    signinSub: 'In the real product, name, age, and gender are pulled automatically from digital identity.',
+    connectedIdentity: 'Connected identity',
+    verified: 'Verified',
+    eidLabel: 'Emirates ID',
+    autoName: 'Name auto-filled',
+    autoAge: 'Age auto-filled',
+    autoGender: 'Gender auto-filled',
+    profileSource: 'Profile source',
+    accessRules: 'Access rules',
+    autoResolved: 'Resolved automatically',
+    continueOtp: 'Continue to OTP',
+    verifyTitle: 'Verify ID',
+    otpSub: 'Demo OTP step for the competition flow.',
+    login: 'Login',
+    appTag: 'Prototype flow',
+    smartMatching: 'Smart matching',
+    heroTitle: 'Find trusted community events near you',
+    heroSub: 'Family, men, women, and kids experiences with clear rules and transport support.',
+    points: 'Points',
+    categoriesLabel: 'Categories',
+    mapTitle: 'Map',
+    mapSub: 'Tap a pin to preview an event and open directions.',
+    createTitle: 'Create event',
+    createSub: 'Publish a new event as a prototype flow and earn points.',
+    eventTitle: 'Event title',
+    categoryLabel: 'Category',
+    dateLabel: 'Date',
+    timeLabel: 'Time',
+    locationLabel: 'Location',
+    descriptionLabel: 'Description',
+    publishEvent: 'Publish event',
+    friendsTitle: 'Friends',
+    friendsSub: 'Add by name, send event invites, and chat inside the prototype.',
+    sendInvite: 'Send invite',
+    communityFriend: 'Community friend',
+    send: 'Send',
+    badgesTitle: 'Badges',
+    joinedEvents: 'Joined events',
+    createdEvents: 'Created events',
+    ridesTitle: 'Driver requests',
+    assistant: 'Assistant',
+    humaidTitle: 'Humaid AI',
+    humaidIntro: 'Ask about events, rules, categories, or transport. This is a prototype conversation flow.',
+    rideTitle: 'Request driver',
+    pickupLabel: 'Pickup location',
+    passengersLabel: 'Passengers',
+    rideNotes: 'Notes',
+    confirmRide: 'Confirm driver request',
+    settingsTitle: 'Settings',
+    languageLabel: 'Language',
+    mapStyleLabel: 'Map style',
+    saveChanges: 'Save changes',
+    resetDemo: 'Reset demo data',
+    rewardsTitle: 'Rewards Store',
+    availablePoints: 'Available points',
+    feedSearchPlaceholder: 'Search title, place, date, category…',
+    friendSearchPlaceholder: 'Search a friend by name',
+    friendMessagePlaceholder: 'Type a message…',
+    humaidPlaceholder: 'Ask Humaid about events, rules, or suggestions…',
+    createTitlePlaceholder: 'Neighborhood Gathering',
+    createLocationPlaceholder: 'Al Majaz Waterfront',
+    createDescriptionPlaceholder: 'A short, welcoming description for the event.',
+    ridePickupPlaceholder: 'Home / University / Mall',
+    rideNotesPlaceholder: 'Any notes for the driver',
     noEvents: 'No events found for this filter.',
+    none: 'None yet.',
+    digitalIdentityLinked: 'Digital identity linked',
+    accessResolved: 'Profile access resolved from linked identity',
+    identityRequired: 'Enter an Emirates ID to continue.',
+    identityLinkedToast: 'Digital identity linked for the prototype.',
+    termsNeeded: 'Accept the terms first.',
     join: 'Join',
     joined: 'Joined',
     details: 'Details',
     driver: 'Driver',
-    points: 'Points',
-    joinedEvents: 'Joined',
-    created: 'Created',
-    rewards: 'Rewards',
-    mapPreview: 'Tap a pin to preview an event.',
-    availablePoints: 'Available Points',
-    buy: 'Buy',
-    owned: 'Owned',
-    locked: 'Locked',
-    inviteSent: 'Invite sent.',
-    eventPublished: 'Event published! +25 points',
-    driverConfirmed: 'Driver confirmed. ETA {eta} minutes.',
+    directions: 'Directions',
     alreadyJoined: 'You already joined this event.',
     joinSuccess: 'Joined event! +10 points',
     menOnly: 'This event is for men only.',
     womenOnly: 'This event is for women only.',
     ageGate: 'You do not meet the age requirement.',
-    humaidName: 'Humaid AI',
-    humaidWelcome: 'Salam. I can suggest events, explain rules, or help with transport inside Naseej Emirates.',
-    humaidPlaceholder: 'Ask Humaid about events, rules, or suggestions…',
-    settingsSaved: 'Settings updated.',
-    resetDone: 'Prototype data reset.',
-    addedFriend: 'Friend added to the prototype list.',
+    inviteSent: 'Invite sent.',
+    friendAdded: 'Friend added to the prototype list.',
+    messageEmpty: 'Write a message first.',
     rewardPurchased: 'Reward purchased.',
-    eventSheetMeta: 'Community event preview',
-    requestRide: 'Request Driver',
-    directions: 'Directions',
-    close: 'Close',
-    digitalIdentityRequired: 'Enter an Emirates ID to continue.',
-    digitalIdentityLinked: 'Digital identity linked for prototype demo.',
-    none: 'None yet.',
-    profileLinked: 'Digital identity linked',
-    profileBioDefault: 'Designing for connection and community.'
+    rewardLocked: 'Not enough points yet.',
+    eventPublished: 'Event published! +25 points',
+    fillCreate: 'Fill in the title, date, location, and description first.',
+    createMenOnly: 'Only male users can create men events.',
+    createWomenOnly: 'Only female users can create women events.',
+    createAdultOnly: 'You must be 18+ for men or women events.',
+    family: 'Family',
+    men: 'Men',
+    women: 'Women',
+    kids: 'Kids',
+    all: 'All',
+    host: 'Host',
+    eventPreview: 'Community event preview',
+    openDirections: 'Open directions',
+    lockedByRules: 'Locked by access rules',
+    requestDriver: 'Request driver',
+    mapEmpty: 'Tap any event pin to preview it here.',
+    rideConfirmed: 'Driver confirmed. ETA {eta} minutes.',
+    languageSaved: 'Settings updated.',
+    resetDone: 'Prototype data reset.',
+    buy: 'Buy',
+    owned: 'Owned',
+    linkedMeta: 'Gender and age come from the linked digital identity.',
+    createRuleDefault: 'Family and kids events stay open. Men and women events are automatically 18+.',
+    createRuleMen: 'Men events are 18+ and only available for male profiles.',
+    createRuleWomen: 'Women events are 18+ and only available for female profiles.',
+    profileMeta: 'Digital identity linked • access auto-resolved',
+    humaidWelcome: 'Salam. I can suggest events, explain rules, or help with transport inside Naseej Emirates.',
+    humaidRules: 'Inside Naseej Emirates, men-only events are for male users, women-only events are for female users, and 18+ rules are applied automatically. Family and kids flows stay open for general community participation.',
+    humaidTransport: 'Open any event card and tap Driver for a demo ride request, or Directions to launch Google Maps.',
+    humaidFallback: 'Try asking: “Suggest events I can join”, “Explain the rules”, or “How do I request a driver?”',
+    humaidSuggest: 'Based on your linked profile, here are good matches:',
+    rewardOwnedLabel: 'Owned rewards',
+    rewardPrice: 'Cost',
+    rideMeta: 'Destination',
+    chatInvitePrefix: 'Join me at',
+    logoutDemo: 'Reset demo data from Settings to restart the full flow.'
   },
   ar: {
-    feedTitle: 'نسيج الإمارات',
-    searchPlaceholder: 'ابحث بالعنوان أو المكان أو التاريخ أو التصنيف…',
-    noEvents: 'ما فيه فعاليات لهذا الفلتر.',
+    welcomeTitle: 'مرحباً بك في نسيج الإمارات',
+    welcomeSub: 'مجتمع واحد منسوج معًا',
+    joinUs: 'انضم إلى نسيج الإمارات',
+    back: 'رجوع',
+    beforeContinue: 'قبل ما تكمل',
+    termsTitle: 'شروط الخدمة',
+    termsSub: 'هذا بروتوتايب للمسابقة ويعرض الفكرة فقط، وليس تحققًا حقيقيًا.',
+    termsInside: 'ماذا يعرض هذا البروتوتايب',
+    termsItem1: 'فكرة تسجيل الدخول بالهوية الرقمية مع خطوة OTP.',
+    termsItem2: 'اكتشاف فعاليات المجتمع بفئات العائلة والرجال والنساء والأطفال.',
+    termsItem3: 'قواعد الدخول وطلب السائق والجوائز والإعدادات وشات الأصدقاء.',
+    termsItem4: 'حميد AI كمساعد محادثة داخل التطبيق.',
+    termsAccept: 'أوافق على شروط البروتوتايب.',
+    continue: 'متابعة',
+    signinTitle: 'تسجيل الدخول بالهوية الرقمية',
+    signinSub: 'في المنتج الحقيقي يتم جلب الاسم والعمر والجنس تلقائيًا من الهوية الرقمية.',
+    connectedIdentity: 'الهوية المرتبطة',
+    verified: 'موثقة',
+    eidLabel: 'رقم الهوية',
+    autoName: 'الاسم تلقائي',
+    autoAge: 'العمر تلقائي',
+    autoGender: 'الجنس تلقائي',
+    profileSource: 'مصدر الملف',
+    accessRules: 'قواعد الدخول',
+    autoResolved: 'تُحدد تلقائيًا',
+    continueOtp: 'المتابعة إلى OTP',
+    verifyTitle: 'تحقق من الهوية',
+    otpSub: 'هذه خطوة OTP تجريبية خاصة بعرض المسابقة.',
+    login: 'دخول',
+    appTag: 'مسار البروتوتايب',
+    smartMatching: 'مطابقة ذكية',
+    heroTitle: 'اكتشف فعاليات مجتمعية موثوقة بالقرب منك',
+    heroSub: 'فعاليات للعائلة والرجال والنساء والأطفال مع قواعد واضحة ودعم للمواصلات.',
+    points: 'نقاط',
+    categoriesLabel: 'فئات',
+    mapTitle: 'الخريطة',
+    mapSub: 'اضغط على أي دبوس لمعاينة الفعالية وفتح الاتجاهات.',
+    createTitle: 'إنشاء فعالية',
+    createSub: 'انشر فعالية جديدة في البروتوتايب واكسب نقاطًا.',
+    eventTitle: 'عنوان الفعالية',
+    categoryLabel: 'الفئة',
+    dateLabel: 'التاريخ',
+    timeLabel: 'الوقت',
+    locationLabel: 'الموقع',
+    descriptionLabel: 'الوصف',
+    publishEvent: 'نشر الفعالية',
+    friendsTitle: 'الأصدقاء',
+    friendsSub: 'أضف بالاسم وأرسل دعوات وتحدث داخل البروتوتايب.',
+    sendInvite: 'إرسال دعوة',
+    communityFriend: 'صديق مجتمعي',
+    send: 'إرسال',
+    badgesTitle: 'الشارات',
+    joinedEvents: 'فعاليات انضممت لها',
+    createdEvents: 'فعاليات أنشأتها',
+    ridesTitle: 'طلبات السائق',
+    assistant: 'المساعد',
+    humaidTitle: 'حميد AI',
+    humaidIntro: 'اسأل عن الفعاليات أو القوانين أو الفئات أو المواصلات. هذه محادثة بروتوتايب.',
+    rideTitle: 'طلب سائق',
+    pickupLabel: 'موقع الالتقاط',
+    passengersLabel: 'عدد الركاب',
+    rideNotes: 'ملاحظات',
+    confirmRide: 'تأكيد طلب السائق',
+    settingsTitle: 'الإعدادات',
+    languageLabel: 'اللغة',
+    mapStyleLabel: 'ستايل الخريطة',
+    saveChanges: 'حفظ التغييرات',
+    resetDemo: 'إعادة ضبط البروتوتايب',
+    rewardsTitle: 'متجر الجوائز',
+    availablePoints: 'النقاط المتاحة',
+    feedSearchPlaceholder: 'ابحث بالعنوان أو المكان أو التاريخ أو الفئة…',
+    friendSearchPlaceholder: 'ابحث عن صديق بالاسم',
+    friendMessagePlaceholder: 'اكتب رسالة…',
+    humaidPlaceholder: 'اسأل حميد عن الفعاليات أو القوانين أو الاقتراحات…',
+    createTitlePlaceholder: 'تجمع الحي',
+    createLocationPlaceholder: 'واجهة المجاز',
+    createDescriptionPlaceholder: 'وصف قصير ومرحب للفعالية.',
+    ridePickupPlaceholder: 'البيت / الجامعة / مول',
+    rideNotesPlaceholder: 'أي ملاحظات للسائق',
+    noEvents: 'لا توجد فعاليات لهذا الفلتر.',
+    none: 'لا يوجد حالياً.',
+    digitalIdentityLinked: 'الهوية الرقمية مرتبطة',
+    accessResolved: 'قواعد الدخول محددة تلقائيًا من الهوية المرتبطة',
+    identityRequired: 'أدخل رقم هوية للمتابعة.',
+    identityLinkedToast: 'تم ربط الهوية الرقمية داخل البروتوتايب.',
+    termsNeeded: 'وافق على الشروط أولاً.',
     join: 'انضم',
     joined: 'تم',
     details: 'تفاصيل',
     driver: 'سائق',
-    points: 'نقاط',
-    joinedEvents: 'منضم',
-    created: 'أنشأت',
-    rewards: 'جوائز',
-    mapPreview: 'اضغط على دبوس لمعاينة فعالية.',
-    availablePoints: 'النقاط المتوفرة',
-    buy: 'شراء',
-    owned: 'تمت',
-    locked: 'مقفلة',
-    inviteSent: 'تم إرسال الدعوة.',
-    eventPublished: 'تم نشر الفعالية! +25 نقطة',
-    driverConfirmed: 'تم تأكيد السائق. الوصول خلال {eta} دقائق.',
-    alreadyJoined: 'أنت منضم لهذه الفعالية من قبل.',
+    directions: 'الاتجاهات',
+    alreadyJoined: 'أنت منضم لهذه الفعالية مسبقًا.',
     joinSuccess: 'تم الانضمام! +10 نقاط',
     menOnly: 'هذه الفعالية للرجال فقط.',
     womenOnly: 'هذه الفعالية للنساء فقط.',
-    ageGate: 'عمرك لا يسمح لهذه الفعالية.',
-    humaidName: 'حميد AI',
-    humaidWelcome: 'هلا. أقدر أقترح فعاليات، أشرح القوانين، أو أساعدك بالمواصلات داخل نسيج الإمارات.',
-    humaidPlaceholder: 'اسأل حميد عن الفعاليات أو القوانين أو الاقتراحات…',
-    settingsSaved: 'تم تحديث الإعدادات.',
-    resetDone: 'تم تصفير بيانات البروتوتايب.',
-    addedFriend: 'تمت إضافة الصديق في البروتوتايب.',
+    ageGate: 'عمرك لا يسمح بهذه الفعالية.',
+    inviteSent: 'تم إرسال الدعوة.',
+    friendAdded: 'تمت إضافة الصديق في البروتوتايب.',
+    messageEmpty: 'اكتب رسالة أولاً.',
     rewardPurchased: 'تم شراء الجائزة.',
-    eventSheetMeta: 'معاينة فعالية مجتمعية',
-    requestRide: 'اطلب سائق',
-    directions: 'الاتجاهات',
-    close: 'إغلاق',
-    digitalIdentityRequired: 'أدخل رقم الهوية للمتابعة.',
-    digitalIdentityLinked: 'تم ربط الهوية الرقمية في البروتوتايب.',
-    none: 'لا يوجد.',
-    profileLinked: 'الهوية الرقمية مرتبطة',
-    profileBioDefault: 'أصمم من أجل الترابط والمجتمع.'
+    rewardLocked: 'نقاطك لا تكفي حالياً.',
+    eventPublished: 'تم نشر الفعالية! +25 نقطة',
+    fillCreate: 'أكمل العنوان والتاريخ والموقع والوصف أولاً.',
+    createMenOnly: 'فقط الملفات الذكورية تستطيع إنشاء فعاليات الرجال.',
+    createWomenOnly: 'فقط الملفات الأنثوية تستطيع إنشاء فعاليات النساء.',
+    createAdultOnly: 'لازم تكون +18 لفعاليات الرجال أو النساء.',
+    family: 'عائلة',
+    men: 'رجال',
+    women: 'نساء',
+    kids: 'أطفال',
+    all: 'الكل',
+    host: 'المضيف',
+    eventPreview: 'معاينة فعالية مجتمعية',
+    openDirections: 'فتح الاتجاهات',
+    lockedByRules: 'مقفلة بسبب القواعد',
+    requestDriver: 'اطلب سائق',
+    mapEmpty: 'اضغط على أي فعالية في الخريطة لمعاينتها هنا.',
+    rideConfirmed: 'تم تأكيد السائق. الوصول خلال {eta} دقائق.',
+    languageSaved: 'تم تحديث الإعدادات.',
+    resetDone: 'تمت إعادة ضبط البروتوتايب.',
+    buy: 'شراء',
+    owned: 'تمت',
+    linkedMeta: 'الجنس والعمر يأتيان من الهوية الرقمية المرتبطة.',
+    createRuleDefault: 'فعاليات العائلة والأطفال مفتوحة. فعاليات الرجال والنساء تكون +18 تلقائيًا.',
+    createRuleMen: 'فعاليات الرجال تكون +18 ومتاحة فقط للملفات الذكورية.',
+    createRuleWomen: 'فعاليات النساء تكون +18 ومتاحة فقط للملفات الأنثوية.',
+    profileMeta: 'هوية رقمية مرتبطة • القواعد محددة تلقائيًا',
+    humaidWelcome: 'هلا. أقدر أقترح فعاليات، أشرح القوانين، أو أساعدك بالمواصلات داخل نسيج الإمارات.',
+    humaidRules: 'داخل نسيج الإمارات، فعاليات الرجال للذكور فقط، وفعاليات النساء للإناث فقط، وقاعدة +18 تطبق تلقائيًا. أما فعاليات العائلة والأطفال فتبقى مفتوحة للمشاركة المجتمعية.',
+    humaidTransport: 'افتح أي كرت فعالية واضغط سائق لطلب تجريبي، أو الاتجاهات لفتح Google Maps.',
+    humaidFallback: 'جرّب تسأل: «اقترح فعاليات أقدر أنضم لها» أو «اشرح القوانين» أو «كيف أطلب سائق؟»',
+    humaidSuggest: 'بناءً على ملفك المرتبط، هذه أفضل الفعاليات المناسبة لك:',
+    rewardOwnedLabel: 'جوائزك',
+    rewardPrice: 'السعر',
+    rideMeta: 'الوجهة',
+    chatInvitePrefix: 'انضم معي إلى',
+    logoutDemo: 'من الإعدادات تقدر تعيد ضبط البيانات وتبدأ العرض من البداية.'
   }
 };
 
 const els = {
-  screens: {
-    splash: document.getElementById('screen-splash'),
-    terms: document.getElementById('screen-terms'),
-    signin: document.getElementById('screen-signin'),
-    otp: document.getElementById('screen-otp'),
-    app: document.getElementById('screen-app'),
-    chat: document.getElementById('screen-chat')
-  },
-  jumpButtons: document.querySelectorAll('.jump-btn'),
-  nextScreenButtons: document.querySelectorAll('[data-next-screen]'),
-  tabButtons: document.querySelectorAll('.tab-item'),
-  appPages: document.querySelectorAll('.app-page'),
+  phoneScreen: document.getElementById('phone-screen'),
+  screens: Array.from(document.querySelectorAll('.screen')),
+  flowPills: Array.from(document.querySelectorAll('.flow-pill')),
+  nextButtons: Array.from(document.querySelectorAll('[data-next-screen]')),
   termsCheck: document.getElementById('terms-check'),
   termsContinue: document.getElementById('terms-continue'),
   signinEid: document.getElementById('signin-eid'),
-  signinVerify: document.getElementById('signin-verify'),
+  signinContinue: document.getElementById('signin-continue'),
+  identityPreviewName: document.querySelector('[data-preview-name]'),
+  identityPreviewMeta: document.querySelector('[data-preview-meta]'),
   otpLogin: document.getElementById('otp-login'),
-  appTitle: document.getElementById('app-title'),
-  openHumaid: document.getElementById('open-humaid'),
-  feedSearch: document.getElementById('feed-search'),
-  categoryFilters: document.getElementById('category-filters'),
-  feedEvents: document.getElementById('feed-events'),
+  appTitle: document.getElementById('app-page-title'),
   heroPoints: document.getElementById('hero-points'),
-  mapPreview: document.getElementById('map-preview'),
+  openHumaid: document.getElementById('open-humaid'),
+  navButtons: Array.from(document.querySelectorAll('.nav-icon')),
+  appPages: Array.from(document.querySelectorAll('.app-page')),
+  feedFilters: document.getElementById('feed-filters'),
+  feedSearch: document.getElementById('feed-search'),
+  feedEvents: document.getElementById('feed-events'),
+  mapPins: document.getElementById('map-pins'),
+  mapSelectedCard: document.getElementById('map-selected-card'),
   mapEventList: document.getElementById('map-event-list'),
-  publishEvent: document.getElementById('publish-event'),
+  createCategories: document.getElementById('create-categories'),
+  createRuleNote: document.getElementById('create-rule-note'),
   createTitle: document.getElementById('create-title'),
   createDate: document.getElementById('create-date'),
   createTime: document.getElementById('create-time'),
   createLocation: document.getElementById('create-location'),
   createDescription: document.getElementById('create-description'),
+  publishEvent: document.getElementById('publish-event'),
+  friendChips: document.getElementById('friend-chips'),
   friendSearch: document.getElementById('friend-search'),
-  friendSearchResults: document.getElementById('friend-search-results'),
+  friendResults: document.getElementById('friend-results'),
+  inviteEventSelect: document.getElementById('invite-event-select'),
   sendInvite: document.getElementById('send-invite'),
-  friendChat: document.getElementById('friend-chat'),
+  chatFriendAvatar: document.getElementById('chat-friend-avatar'),
+  chatFriendName: document.getElementById('chat-friend-name'),
+  friendChatLog: document.getElementById('friend-chat-log'),
   friendMessage: document.getElementById('friend-message'),
   sendFriendMessage: document.getElementById('send-friend-message'),
   profileAvatar: document.getElementById('profile-avatar'),
   profileName: document.getElementById('profile-name'),
-  profileEid: document.getElementById('profile-eid'),
+  profileMeta: document.getElementById('profile-meta'),
   profileBio: document.getElementById('profile-bio'),
   profileStats: document.getElementById('profile-stats'),
   badgeRow: document.getElementById('badge-row'),
   joinedList: document.getElementById('joined-list'),
+  createdList: document.getElementById('created-list'),
   ridesList: document.getElementById('rides-list'),
   openSettings: document.getElementById('open-settings'),
   openRewards: document.getElementById('open-rewards'),
+  languageChips: document.getElementById('language-chips'),
+  mapstyleChips: document.getElementById('mapstyle-chips'),
   saveSettings: document.getElementById('save-settings'),
   resetDemo: document.getElementById('reset-demo'),
   rewardPoints: document.getElementById('reward-points'),
@@ -268,16 +479,28 @@ const els = {
   humaidChatLog: document.getElementById('humaid-chat-log'),
   humaidInput: document.getElementById('humaid-input'),
   sendHumaid: document.getElementById('send-humaid'),
-  eventSheetTitle: document.getElementById('sheet-event-title'),
+  eventSheet: document.getElementById('event-sheet'),
+  eventSheetTitle: document.getElementById('event-sheet-title'),
   eventSheetBody: document.getElementById('event-sheet-body'),
-  closeSheetButtons: document.querySelectorAll('[data-close-sheet]'),
+  rideSheet: document.getElementById('ride-sheet'),
+  rideTarget: document.getElementById('ride-target'),
+  ridePickup: document.getElementById('ride-pickup'),
+  ridePassengers: document.getElementById('ride-passengers'),
+  rideNotes: document.getElementById('ride-notes'),
+  confirmRide: document.getElementById('confirm-ride'),
+  settingsSheet: document.getElementById('settings-sheet'),
+  rewardsSheet: document.getElementById('rewards-sheet'),
+  closeSheetButtons: Array.from(document.querySelectorAll('[data-close-sheet]')),
   toast: document.getElementById('toast')
 };
 
-let state = loadState();
 let activeScreen = 'splash';
 let activePage = 'feed';
 let activeFilter = 'all';
+let selectedCreateCategory = 'family';
+let selectedMapEventId = null;
+let rideEventId = null;
+let state = loadState();
 
 function defaultState() {
   const linked = LINKED_IDENTITIES['784-1990-1234567-1'];
@@ -286,6 +509,7 @@ function defaultState() {
     signedIn: false,
     language: 'en',
     mapStyle: 'dark',
+    activeIdentity: linked.eid,
     profile: {
       name: linked.name,
       eid: linked.eid,
@@ -299,14 +523,20 @@ function defaultState() {
     createdEventIds: [],
     rewardsOwned: [],
     rides: [],
-    events: [...BASE_EVENTS],
+    events: BASE_EVENTS.map(event => ({ ...event })),
     friendIds: ['f1', 'f2'],
-    friendMessages: [
-      { id: 'm1', from: 'them', text: 'Are you joining the picnic tomorrow?' },
-      { id: 'm2', from: 'me', text: 'Yes, send me the details and I might request a driver.' }
-    ],
+    selectedFriendId: 'f1',
+    friendMessages: {
+      f1: [
+        { id: 'm1', from: 'them', text: 'Are you joining the picnic tomorrow?' },
+        { id: 'm2', from: 'me', text: 'Yes, send me the details and I might request a driver.' }
+      ],
+      f2: [
+        { id: 'm3', from: 'them', text: 'There is a women wellness event next week.' }
+      ]
+    },
     humaidMessages: [
-      { role: 'assistant', text: UI.en.humaidWelcome }
+      { role: 'assistant', text: COPY.en.humaidWelcome }
     ]
   };
 }
@@ -316,10 +546,16 @@ function loadState() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultState();
     const parsed = JSON.parse(raw);
+    const base = defaultState();
     return {
-      ...defaultState(),
+      ...base,
       ...parsed,
-      profile: { ...defaultState().profile, ...(parsed.profile || {}) }
+      profile: { ...base.profile, ...(parsed.profile || {}) },
+      friendMessages: { ...base.friendMessages, ...(parsed.friendMessages || {}) },
+      humaidMessages: Array.isArray(parsed.humaidMessages) && parsed.humaidMessages.length
+        ? parsed.humaidMessages
+        : base.humaidMessages,
+      events: Array.isArray(parsed.events) && parsed.events.length ? parsed.events : base.events
     };
   } catch {
     return defaultState();
@@ -330,650 +566,844 @@ function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
-function t(key) {
-  return UI[state.language]?.[key] || UI.en[key] || key;
+function text(key) {
+  return COPY[state.language]?.[key] || COPY.en[key] || key;
+}
+
+function formatText(key, vars = {}) {
+  let value = text(key);
+  Object.entries(vars).forEach(([name, replacement]) => {
+    value = value.replace(`{${name}}`, String(replacement));
+  });
+  return value;
 }
 
 function categoryLabel(code) {
-  const labels = {
-    en: { all: 'All', family: 'Family', men: 'Men', women: 'Women', kids: 'Kids' },
-    ar: { all: 'الكل', family: 'عائلة', men: 'رجال', women: 'نساء', kids: 'أطفال' }
-  };
-  return labels[state.language][code] || code;
+  return text(code);
+}
+
+function getFriend(id) {
+  return FRIEND_POOL.find(friend => friend.id === id);
+}
+
+function getEvent(id) {
+  return state.events.find(event => event.id === id);
 }
 
 function initials(name) {
   const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
-  if (!parts.length) return 'NU';
+  if (!parts.length) return 'NE';
   if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-  return (parts[0][0] + parts[1][0]).toUpperCase();
+  return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
 }
 
 function showToast(message) {
   els.toast.textContent = message;
   els.toast.classList.add('show');
   clearTimeout(showToast.timer);
-  showToast.timer = setTimeout(() => els.toast.classList.remove('show'), 2200);
-}
-
-function applyTheme() {
-  document.body.classList.toggle('rtl', state.language === 'ar');
-  document.body.classList.toggle('map-light', state.mapStyle === 'light');
-  els.feedSearch.placeholder = t('searchPlaceholder');
-  els.humaidInput.placeholder = t('humaidPlaceholder');
-  els.appTitle.textContent = t('feedTitle');
-  document.querySelector('.reward-header span').textContent = t('availablePoints');
-  document.querySelector('#screen-chat .chat-header-bar h4').textContent = t('humaidName');
+  showToast.timer = setTimeout(() => els.toast.classList.remove('show'), 2300);
 }
 
 function showScreen(name) {
   activeScreen = name;
-  Object.entries(els.screens).forEach(([key, screen]) => {
-    screen.classList.toggle('active', key === name);
+  els.screens.forEach(screen => {
+    screen.classList.toggle('active', screen.id === `screen-${name}`);
   });
-  els.jumpButtons.forEach(btn => {
-    const target = btn.dataset.screen;
-    btn.classList.toggle('active', target === name || (name === 'chat' && target === 'app'));
-  });
-}
-
-function showAppPage(name) {
-  activePage = name;
-  els.appPages.forEach(page => page.classList.toggle('active', page.dataset.page === name));
-  els.tabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.pageTarget === name));
-}
-
-function selectedValue(groupName) {
-  const active = document.querySelector(`[data-group="${groupName}"] .chip-btn.active`);
-  return active?.dataset.value || '';
-}
-
-function setGroupValue(groupName, value) {
-  document.querySelectorAll(`[data-group="${groupName}"] .chip-btn`).forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.value === value);
+  els.flowPills.forEach(button => {
+    button.classList.toggle('active', button.dataset.flowScreen === name);
   });
 }
 
-function canJoin(eventObj) {
-  const { gender, age } = state.profile;
-  if (eventObj.gender === 'Male' && gender !== 'Male') return { ok: false, reason: t('menOnly') };
-  if (eventObj.gender === 'Female' && gender !== 'Female') return { ok: false, reason: t('womenOnly') };
-  if (Number(age) < Number(eventObj.minAge || 0)) return { ok: false, reason: t('ageGate') };
-  return { ok: true, reason: '' };
+function showAppPage(page) {
+  activePage = page;
+  const titles = {
+    feed: 'Naseej Emirates',
+    map: text('mapTitle'),
+    create: text('createTitle'),
+    friends: text('friendsTitle'),
+    profile: text('profileMeta').split('•')[0].trim()
+  };
+  els.appTitle.textContent = titles[page] || 'Naseej Emirates';
+  els.appPages.forEach(appPage => {
+    appPage.classList.toggle('active', appPage.dataset.page === page);
+  });
+  els.navButtons.forEach(button => {
+    button.classList.toggle('active', button.dataset.pageTarget === page);
+  });
 }
 
-function findEvent(eventId) {
-  return state.events.find(eventObj => eventObj.id === eventId);
+function openSheet(sheet) {
+  sheet.classList.add('open');
 }
 
-function identityFromEid(eid) {
-  const clean = String(eid || '').trim();
-  return LINKED_IDENTITIES[clean] || {
-    name: 'Digital ID User',
-    eid: clean || '784-1990-1234567-1',
+function closeSheet(sheet) {
+  sheet.classList.remove('open');
+}
+
+function directionsUrl(event) {
+  return `https://www.google.com/maps/dir/?api=1&destination=${event.lat},${event.lon}`;
+}
+
+function seedFromIdentity(eid) {
+  return LINKED_IDENTITIES[eid] || {
+    eid,
+    name: state.language === 'ar' ? 'مستخدم مرتبط' : 'Linked User',
     gender: 'Male',
-    age: 22,
-    bioEn: UI.en.profileBioDefault,
-    bioAr: UI.ar.profileBioDefault,
-    points: 120,
+    age: 21,
+    bioEn: 'Digital identity linked for prototype access.',
+    bioAr: 'هوية رقمية مرتبطة لدخول البروتوتايب.',
+    points: 90,
     badges: ['Starter'],
     joinedEventIds: []
   };
 }
 
-function renderFeed() {
-  const filterButtons = ['all', 'family', 'men', 'women', 'kids']
-    .map(code => `<button class="filter-chip ${activeFilter === code ? 'active' : ''}" data-filter="${code}">${categoryLabel(code)}</button>`)
-    .join('');
-  els.categoryFilters.innerHTML = filterButtons;
+function applyIdentity(eid) {
+  const linked = seedFromIdentity(eid);
+  state.activeIdentity = linked.eid;
+  state.profile = {
+    name: linked.name,
+    eid: linked.eid,
+    gender: linked.gender,
+    age: linked.age,
+    bio: state.language === 'ar' ? linked.bioAr : linked.bioEn
+  };
+  state.points = linked.points;
+  state.badges = [...linked.badges];
+  state.joinedEventIds = [...linked.joinedEventIds];
+  state.createdEventIds = [];
+  state.rewardsOwned = [];
+  state.rides = [];
+  state.selectedFriendId = 'f1';
+  state.humaidMessages = [{ role: 'assistant', text: text('humaidWelcome') }];
+  saveState();
+}
 
-  const query = els.feedSearch.value.trim().toLowerCase();
-  const filtered = state.events.filter(eventObj => {
-    const matchesFilter = activeFilter === 'all' || eventObj.category === activeFilter;
-    const blob = `${eventObj.title} ${eventObj.place} ${eventObj.date} ${eventObj.city} ${eventObj.category}`.toLowerCase();
-    const matchesQuery = !query || blob.includes(query);
-    return matchesFilter && matchesQuery;
+function canJoinEvent(event) {
+  const { gender, age } = state.profile;
+  if (event.category === 'men' && gender !== 'Male') return { ok: false, reason: text('menOnly') };
+  if (event.category === 'women' && gender !== 'Female') return { ok: false, reason: text('womenOnly') };
+  if (Number(age) < Number(event.minAge || 0)) return { ok: false, reason: text('ageGate') };
+  return { ok: true, reason: '' };
+}
+
+function canCreateCategory(category) {
+  const { gender, age } = state.profile;
+  if (category === 'men') {
+    if (gender !== 'Male') return { ok: false, reason: text('createMenOnly') };
+    if (Number(age) < 18) return { ok: false, reason: text('createAdultOnly') };
+  }
+  if (category === 'women') {
+    if (gender !== 'Female') return { ok: false, reason: text('createWomenOnly') };
+    if (Number(age) < 18) return { ok: false, reason: text('createAdultOnly') };
+  }
+  return { ok: true, reason: '' };
+}
+
+function updateDirectionAndLanguage() {
+  const isArabic = state.language === 'ar';
+  document.documentElement.lang = state.language;
+  els.phoneScreen.setAttribute('dir', isArabic ? 'rtl' : 'ltr');
+  document.querySelectorAll('[data-i18n]').forEach(node => {
+    node.textContent = text(node.dataset.i18n);
   });
 
-  els.heroPoints.textContent = state.points;
+  els.feedSearch.placeholder = text('feedSearchPlaceholder');
+  els.friendSearch.placeholder = text('friendSearchPlaceholder');
+  els.friendMessage.placeholder = text('friendMessagePlaceholder');
+  els.humaidInput.placeholder = text('humaidPlaceholder');
+  els.createTitle.placeholder = text('createTitlePlaceholder');
+  els.createLocation.placeholder = text('createLocationPlaceholder');
+  els.createDescription.placeholder = text('createDescriptionPlaceholder');
+  els.ridePickup.placeholder = text('ridePickupPlaceholder');
+  els.rideNotes.placeholder = text('rideNotesPlaceholder');
 
-  if (!filtered.length) {
-    els.feedEvents.innerHTML = `<div class="event-card">${t('noEvents')}</div>`;
+  renderFeedFilters();
+  renderCreateCategories();
+  renderSettingsSheet();
+  renderFeed();
+  renderMap();
+  renderFriends();
+  renderProfile();
+  renderRewards();
+  renderHumaid();
+}
+
+function renderFeedFilters() {
+  const categories = ['all', 'family', 'men', 'women', 'kids'];
+  els.feedFilters.innerHTML = '';
+  categories.forEach(code => {
+    const button = document.createElement('button');
+    button.className = `chip-button ${activeFilter === code ? 'active' : ''}`;
+    button.textContent = categoryLabel(code);
+    button.addEventListener('click', () => {
+      activeFilter = code;
+      renderFeedFilters();
+      renderFeed();
+    });
+    els.feedFilters.appendChild(button);
+  });
+}
+
+function renderFeed() {
+  els.heroPoints.textContent = state.points;
+  const query = els.feedSearch.value.trim().toLowerCase();
+  const visible = state.events.filter(event => {
+    const matchesFilter = activeFilter === 'all' || event.category === activeFilter;
+    const blob = `${event.title} ${event.place} ${event.date} ${event.category} ${event.description}`.toLowerCase();
+    return matchesFilter && (!query || blob.includes(query));
+  });
+
+  els.feedEvents.innerHTML = '';
+  if (!visible.length) {
+    els.feedEvents.innerHTML = `<div class="simple-item"><span>${text('noEvents')}</span></div>`;
     return;
   }
 
-  els.feedEvents.innerHTML = filtered.map(eventObj => {
-    const joined = state.joinedEventIds.includes(eventObj.id);
-    const access = canJoin(eventObj);
-    return `
-      <article class="event-card">
-        <div class="pill-row">
-          <span class="pill">${categoryLabel(eventObj.category)}</span>
-          <span class="pill alt">${eventObj.city}</span>
-          ${eventObj.minAge >= 18 ? `<span class="pill">18+</span>` : ''}
-        </div>
-        <h5 class="event-title">${eventObj.title}</h5>
-        <p class="event-detail">${eventObj.place} • ${eventObj.date} • ${eventObj.time}</p>
-        <p class="event-detail">${eventObj.description}</p>
-        ${!access.ok ? `<p class="helper-text">${access.reason}</p>` : ''}
-        <div class="event-actions">
-          <button class="primary-mini" data-action="join" data-id="${eventObj.id}" ${joined || !access.ok ? 'disabled' : ''}>${joined ? t('joined') : t('join')}</button>
-          <button class="ghost-btn" data-action="details" data-id="${eventObj.id}">${t('details')}</button>
-          <button class="ghost-btn" data-action="driver" data-id="${eventObj.id}">${t('driver')}</button>
-        </div>
-      </article>
+  visible.forEach(event => {
+    const access = canJoinEvent(event);
+    const joined = state.joinedEventIds.includes(event.id);
+    const card = document.createElement('article');
+    card.className = 'event-card';
+    card.innerHTML = `
+      <div>
+        <span class="category-pill ${joined ? 'active' : ''}">${categoryLabel(event.category)}</span>
+        ${event.minAge >= 18 ? '<span class="category-pill">18+</span>' : ''}
+      </div>
+      <h5>${event.title}</h5>
+      <div class="event-meta">${event.place} • ${event.city} • ${event.date} • ${event.time}<br>${text('host')}: ${event.host}</div>
+      <p>${event.description}</p>
+      ${!access.ok ? `<div class="lock-note">${text('lockedByRules')}: ${access.reason}</div>` : ''}
+      <div class="event-actions">
+        <button class="primary-mini">${joined ? text('joined') : text('join')}</button>
+        <button class="secondary-mini">${text('details')}</button>
+        <button class="secondary-mini">${text('driver')}</button>
+      </div>
     `;
-  }).join('');
+
+    const [joinBtn, detailsBtn, driverBtn] = card.querySelectorAll('button');
+    joinBtn.disabled = joined || !access.ok;
+    joinBtn.addEventListener('click', () => joinEvent(event.id));
+    detailsBtn.addEventListener('click', () => openEventDetails(event.id));
+    driverBtn.addEventListener('click', () => openRideRequest(event.id));
+
+    els.feedEvents.appendChild(card);
+  });
+}
+
+function joinEvent(eventId) {
+  const event = getEvent(eventId);
+  if (!event) return;
+  if (state.joinedEventIds.includes(eventId)) {
+    showToast(text('alreadyJoined'));
+    return;
+  }
+  const access = canJoinEvent(event);
+  if (!access.ok) {
+    showToast(access.reason);
+    return;
+  }
+  state.joinedEventIds.push(eventId);
+  state.points += 10;
+  if (!state.badges.includes('Participant')) state.badges.push('Participant');
+  saveState();
+  renderFeed();
+  renderFriends();
+  renderProfile();
+  renderRewards();
+  showToast(text('joinSuccess'));
+}
+
+function openEventDetails(eventId) {
+  const event = getEvent(eventId);
+  if (!event) return;
+  els.eventSheetTitle.textContent = event.title;
+  els.eventSheetBody.innerHTML = `
+    <div class="stacked-gap">
+      <div class="simple-item">
+        <strong>${text('eventPreview')}</strong>
+        <span>${event.place} • ${event.city} • ${event.date} • ${event.time}</span>
+      </div>
+      <p>${event.description}</p>
+      <div class="simple-item">
+        <strong>${text('host')}</strong>
+        <span>${event.host}</span>
+      </div>
+      <div class="event-sheet-actions">
+        <button class="primary-mini" id="sheet-join">${state.joinedEventIds.includes(event.id) ? text('joined') : text('join')}</button>
+        <button class="secondary-mini" id="sheet-ride">${text('requestDriver')}</button>
+        <button class="secondary-mini" id="sheet-directions">${text('openDirections')}</button>
+      </div>
+    </div>
+  `;
+  const joinBtn = document.getElementById('sheet-join');
+  const rideBtn = document.getElementById('sheet-ride');
+  const dirBtn = document.getElementById('sheet-directions');
+  joinBtn.disabled = state.joinedEventIds.includes(event.id) || !canJoinEvent(event).ok;
+  joinBtn.addEventListener('click', () => {
+    joinEvent(event.id);
+    closeSheet(els.eventSheet);
+  });
+  rideBtn.addEventListener('click', () => {
+    closeSheet(els.eventSheet);
+    openRideRequest(event.id);
+  });
+  dirBtn.addEventListener('click', () => window.open(directionsUrl(event), '_blank'));
+  openSheet(els.eventSheet);
 }
 
 function renderMap() {
-  const first = state.events[0];
-  if (!first) return;
-  els.mapPreview.innerHTML = `<strong>${first.title}</strong><span>${first.place} • ${first.date} • ${first.time}</span>`;
-  els.mapEventList.innerHTML = state.events.slice(0, 4).map(eventObj => `
-    <div class="mini-list-item">
-      <div>
-        <strong>${eventObj.title}</strong>
-        <span>${eventObj.place}</span>
-      </div>
-      <button class="ghost-btn small" data-action="details" data-id="${eventObj.id}">${t('details')}</button>
+  const events = state.events;
+  const mapCard = document.querySelector('.map-card');
+  mapCard.style.background = state.mapStyle === 'dark'
+    ? 'linear-gradient(180deg, rgba(76, 88, 84, 0.92), rgba(45, 49, 47, 0.96))'
+    : 'linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.3))';
+  els.mapPins.innerHTML = '';
+  els.mapEventList.innerHTML = '';
+  const lats = events.map(event => event.lat);
+  const lons = events.map(event => event.lon);
+  const minLat = Math.min(...lats);
+  const maxLat = Math.max(...lats);
+  const minLon = Math.min(...lons);
+  const maxLon = Math.max(...lons);
+
+  events.forEach(event => {
+    const top = 16 + ((maxLat - event.lat) / (maxLat - minLat || 1)) * 180;
+    const left = 20 + ((event.lon - minLon) / (maxLon - minLon || 1)) * 280;
+    const pin = document.createElement('button');
+    pin.className = `map-pin ${selectedMapEventId === event.id ? 'active' : ''}`;
+    pin.style.top = `${top}px`;
+    pin.style.left = `${left}px`;
+    pin.title = event.title;
+    pin.addEventListener('click', () => {
+      selectedMapEventId = event.id;
+      renderMap();
+    });
+    els.mapPins.appendChild(pin);
+
+    const item = document.createElement('div');
+    item.className = 'simple-item';
+    item.innerHTML = `<strong>${event.title}</strong><span>${event.place} • ${event.date}</span>`;
+    item.addEventListener('click', () => {
+      selectedMapEventId = event.id;
+      renderMap();
+    });
+    els.mapEventList.appendChild(item);
+  });
+
+  const selectedEvent = getEvent(selectedMapEventId || events[0]?.id);
+  selectedMapEventId = selectedEvent?.id || null;
+  if (!selectedEvent) {
+    els.mapSelectedCard.className = 'map-selected-card empty';
+    els.mapSelectedCard.textContent = text('mapEmpty');
+    return;
+  }
+  els.mapSelectedCard.className = 'map-selected-card';
+  els.mapSelectedCard.innerHTML = `
+    <h5>${selectedEvent.title}</h5>
+    <p>${selectedEvent.place} • ${selectedEvent.city} • ${selectedEvent.date} • ${selectedEvent.time}</p>
+    <div class="event-actions">
+      <button class="primary-mini" id="map-details">${text('details')}</button>
+      <button class="secondary-mini" id="map-driver">${text('driver')}</button>
+      <button class="secondary-mini" id="map-directions">${text('directions')}</button>
     </div>
-  `).join('');
+  `;
+  document.getElementById('map-details').addEventListener('click', () => openEventDetails(selectedEvent.id));
+  document.getElementById('map-driver').addEventListener('click', () => openRideRequest(selectedEvent.id));
+  document.getElementById('map-directions').addEventListener('click', () => window.open(directionsUrl(selectedEvent), '_blank'));
+}
+
+function renderCreateCategories() {
+  const categories = ['family', 'men', 'women', 'kids'];
+  els.createCategories.innerHTML = '';
+  categories.forEach(category => {
+    const button = document.createElement('button');
+    button.className = `category-pill ${selectedCreateCategory === category ? 'active' : ''}`;
+    button.textContent = categoryLabel(category);
+    button.addEventListener('click', () => {
+      selectedCreateCategory = category;
+      renderCreateCategories();
+      updateCreateRuleNote();
+    });
+    els.createCategories.appendChild(button);
+  });
+  updateCreateRuleNote();
+}
+
+function updateCreateRuleNote() {
+  if (selectedCreateCategory === 'men') {
+    els.createRuleNote.textContent = text('createRuleMen');
+  } else if (selectedCreateCategory === 'women') {
+    els.createRuleNote.textContent = text('createRuleWomen');
+  } else {
+    els.createRuleNote.textContent = text('createRuleDefault');
+  }
+}
+
+function publishEvent() {
+  const title = els.createTitle.value.trim();
+  const date = els.createDate.value;
+  const time = els.createTime.value.trim() || '06:00 PM';
+  const place = els.createLocation.value.trim();
+  const description = els.createDescription.value.trim();
+
+  if (!title || !date || !place || !description) {
+    showToast(text('fillCreate'));
+    return;
+  }
+  const createAccess = canCreateCategory(selectedCreateCategory);
+  if (!createAccess.ok) {
+    showToast(createAccess.reason);
+    return;
+  }
+
+  const event = {
+    id: `ev${Date.now()}`,
+    title,
+    category: selectedCreateCategory,
+    description,
+    place,
+    date,
+    time,
+    host: state.profile.name,
+    city: 'Sharjah',
+    minAge: ['men', 'women'].includes(selectedCreateCategory) ? 18 : 0,
+    lat: 25.333 + Math.random() * 0.03,
+    lon: 55.37 + Math.random() * 0.03
+  };
+
+  state.events.unshift(event);
+  state.createdEventIds.unshift(event.id);
+  state.points += 25;
+  if (!state.badges.includes('Organizer')) state.badges.push('Organizer');
+  saveState();
+  renderFeed();
+  renderMap();
+  renderFriends();
+  renderProfile();
+  renderRewards();
+  els.createTitle.value = '';
+  els.createDate.value = '';
+  els.createTime.value = '';
+  els.createLocation.value = '';
+  els.createDescription.value = '';
+  showToast(text('eventPublished'));
+  showAppPage('feed');
+}
+
+function renderFriends() {
+  const query = els.friendSearch.value.trim().toLowerCase();
+  const currentFriend = getFriend(state.selectedFriendId) || FRIEND_POOL[0];
+  els.friendChips.innerHTML = '';
+  state.friendIds.forEach(friendId => {
+    const friend = getFriend(friendId);
+    if (!friend) return;
+    const chip = document.createElement('button');
+    chip.className = `chip-button ${state.selectedFriendId === friendId ? 'active' : ''}`;
+    chip.textContent = friend.name;
+    chip.addEventListener('click', () => {
+      state.selectedFriendId = friendId;
+      saveState();
+      renderFriends();
+    });
+    els.friendChips.appendChild(chip);
+  });
+  const already = new Set(state.friendIds);
+  const candidates = FRIEND_POOL.filter(friend => !already.has(friend.id) && (!query || friend.name.toLowerCase().includes(query)));
+  els.friendResults.innerHTML = '';
+
+  if (query && !candidates.length) {
+    els.friendResults.innerHTML = `<div class="simple-item"><span>${text('none')}</span></div>`;
+  } else {
+    candidates.forEach(friend => {
+      const button = document.createElement('button');
+      button.innerHTML = `${friend.name}<small>${friend.subtitle}</small>`;
+      button.addEventListener('click', () => {
+        state.friendIds.push(friend.id);
+        state.selectedFriendId = friend.id;
+        state.friendMessages[friend.id] = state.friendMessages[friend.id] || [];
+        saveState();
+        renderFriends();
+        showToast(text('friendAdded'));
+      });
+      els.friendResults.appendChild(button);
+    });
+  }
+
+  els.inviteEventSelect.innerHTML = '';
+  const joinedAndCreated = [...new Set([...state.joinedEventIds, ...state.createdEventIds])].map(getEvent).filter(Boolean);
+  const inviteOptions = joinedAndCreated.length ? joinedAndCreated : state.events.slice(0, 5);
+  inviteOptions.forEach(event => {
+    const option = document.createElement('option');
+    option.value = event.id;
+    option.textContent = `${event.title} • ${event.date}`;
+    els.inviteEventSelect.appendChild(option);
+  });
+
+  els.chatFriendAvatar.textContent = currentFriend.avatar;
+  els.chatFriendName.textContent = currentFriend.name;
+  const messages = state.friendMessages[currentFriend.id] || [];
+  els.friendChatLog.innerHTML = '';
+  if (!messages.length) {
+    els.friendChatLog.innerHTML = `<div class="simple-item"><span>${text('none')}</span></div>`;
+  } else {
+    messages.forEach(message => {
+      const bubble = document.createElement('div');
+      bubble.className = `chat-bubble ${message.from === 'me' ? 'me' : 'them'}`;
+      bubble.textContent = message.text;
+      els.friendChatLog.appendChild(bubble);
+    });
+  }
+}
+
+function sendInvite() {
+  const friend = getFriend(state.selectedFriendId);
+  const event = getEvent(els.inviteEventSelect.value);
+  if (!friend || !event) return;
+  const message = `${text('chatInvitePrefix')} “${event.title}” — ${event.place} — ${event.date}. ${directionsUrl(event)}`;
+  state.friendMessages[friend.id] = state.friendMessages[friend.id] || [];
+  state.friendMessages[friend.id].push({ id: `m${Date.now()}`, from: 'me', text: message });
+  saveState();
+  renderFriends();
+  showToast(text('inviteSent'));
+}
+
+function sendFriendMessage() {
+  const friend = getFriend(state.selectedFriendId);
+  const message = els.friendMessage.value.trim();
+  if (!friend || !message) {
+    showToast(text('messageEmpty'));
+    return;
+  }
+  state.friendMessages[friend.id] = state.friendMessages[friend.id] || [];
+  state.friendMessages[friend.id].push({ id: `m${Date.now()}`, from: 'me', text: message });
+  saveState();
+  els.friendMessage.value = '';
+  renderFriends();
 }
 
 function renderProfile() {
   els.profileAvatar.textContent = initials(state.profile.name);
   els.profileName.textContent = state.profile.name;
-  els.profileEid.textContent = `${t('profileLinked')} • …${state.profile.eid.slice(-4)}`;
-  els.profileBio.textContent = state.profile.bio || t('profileBioDefault');
-  els.profileStats.innerHTML = `
-    <div><strong>${state.points}</strong><span>${t('points')}</span></div>
-    <div><strong>${state.joinedEventIds.length}</strong><span>${t('joinedEvents')}</span></div>
-    <div><strong>${state.createdEventIds.length}</strong><span>${t('created')}</span></div>
-    <div><strong>${state.rewardsOwned.length}</strong><span>${t('rewards')}</span></div>
-  `;
+  els.profileMeta.textContent = `${text('profileMeta')} • ${state.profile.eid.slice(-4)}`;
+  els.profileBio.textContent = state.profile.bio;
+  els.profileStats.innerHTML = '';
+  const stats = [
+    [text('points'), state.points],
+    [text('joinedEvents'), state.joinedEventIds.length],
+    [text('createdEvents'), state.createdEventIds.length],
+    [text('rewardsTitle'), state.rewardsOwned.length]
+  ];
+  stats.forEach(([label, value]) => {
+    const card = document.createElement('div');
+    card.className = 'stat-card';
+    card.innerHTML = `<strong>${value}</strong><span>${label}</span>`;
+    els.profileStats.appendChild(card);
+  });
 
-  els.badgeRow.innerHTML = state.badges.map(badge => `<span class="badge-chip">${badge}</span>`).join('');
+  els.badgeRow.innerHTML = '';
+  state.badges.forEach(badge => {
+    const chip = document.createElement('span');
+    chip.className = 'badge-pill';
+    chip.textContent = badge;
+    els.badgeRow.appendChild(chip);
+  });
 
-  const joinedEvents = state.joinedEventIds.map(findEvent).filter(Boolean);
-  els.joinedList.innerHTML = joinedEvents.length
-    ? joinedEvents.map(eventObj => `<div class="mini-list-item"><div><strong>${eventObj.title}</strong><span>${eventObj.place} • ${eventObj.date}</span></div></div>`).join('')
-    : `<div class="mini-list-item"><span>${t('none')}</span></div>`;
+  fillSimpleList(els.joinedList, state.joinedEventIds.map(getEvent).filter(Boolean), event => `${event.title} • ${event.place} • ${event.date}`);
+  fillSimpleList(els.createdList, state.createdEventIds.map(getEvent).filter(Boolean), event => `${event.title} • ${event.place} • ${event.date}`);
+  fillSimpleList(els.ridesList, state.rides, ride => `${ride.eventTitle} • ${ride.driverName} • ETA ${ride.eta}`);
+}
 
-  els.ridesList.innerHTML = state.rides.length
-    ? state.rides.map(ride => `<div class="mini-list-item"><div><strong>${ride.eventTitle}</strong><span>${ride.driver} • ETA ${ride.eta} min</span></div></div>`).join('')
-    : `<div class="mini-list-item"><span>${t('none')}</span></div>`;
+function fillSimpleList(container, items, formatter) {
+  container.innerHTML = '';
+  if (!items.length) {
+    container.innerHTML = `<div class="simple-item"><span>${text('none')}</span></div>`;
+    return;
+  }
+  items.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'simple-item';
+    row.innerHTML = `<strong>${formatter(item)}</strong>`;
+    container.appendChild(row);
+  });
+}
+
+function renderSettingsSheet() {
+  els.languageChips.innerHTML = '';
+  [
+    { value: 'en', label: 'English' },
+    { value: 'ar', label: 'العربية' }
+  ].forEach(option => {
+    const button = document.createElement('button');
+    button.className = `setting-chip ${state.language === option.value ? 'active' : ''}`;
+    button.textContent = option.label;
+    button.addEventListener('click', () => {
+      state.language = option.value;
+      state.profile.bio = option.value === 'ar'
+        ? seedFromIdentity(state.activeIdentity).bioAr
+        : seedFromIdentity(state.activeIdentity).bioEn;
+      state.humaidMessages = [{ role: 'assistant', text: text('humaidWelcome') }];
+      saveState();
+      updateDirectionAndLanguage();
+    });
+    els.languageChips.appendChild(button);
+  });
+
+  els.mapstyleChips.innerHTML = '';
+  [
+    { value: 'dark', label: 'Dark' },
+    { value: 'light', label: 'Light' }
+  ].forEach(option => {
+    const button = document.createElement('button');
+    button.className = `setting-chip ${state.mapStyle === option.value ? 'active' : ''}`;
+    button.textContent = state.language === 'ar'
+      ? (option.value === 'dark' ? 'غامق' : 'فاتح')
+      : option.label;
+    button.addEventListener('click', () => {
+      state.mapStyle = option.value;
+      saveState();
+      renderMap();
+      renderSettingsSheet();
+    });
+    els.mapstyleChips.appendChild(button);
+  });
 }
 
 function renderRewards() {
   els.rewardPoints.textContent = state.points;
-  els.rewardList.innerHTML = REWARDS.map(reward => {
+  els.rewardList.innerHTML = '';
+  REWARDS.forEach(reward => {
     const owned = state.rewardsOwned.includes(reward.id);
-    const tooExpensive = state.points < reward.cost;
-    const btnLabel = owned ? t('owned') : tooExpensive ? t('locked') : t('buy');
-    const cls = owned || tooExpensive ? 'reward-buy locked' : 'reward-buy';
-    return `
-      <article class="reward-item">
+    const locked = state.points < reward.cost;
+    const card = document.createElement('div');
+    card.className = 'reward-card';
+    card.innerHTML = `
+      <div class="reward-card-top">
         <div>
-          <strong>${reward.title[state.language]}</strong>
-          <p>${reward.description[state.language]} • ${reward.cost} pts</p>
+          <h5>${reward.title[state.language]}</h5>
+          <p>${reward.description[state.language]}</p>
         </div>
-        <button class="${cls}" data-buy-reward="${reward.id}" ${owned || tooExpensive ? 'disabled' : ''}>${btnLabel}</button>
-      </article>
+        <span class="price-chip">${text('rewardPrice')}: ${reward.cost}</span>
+      </div>
+      <button class="${owned ? 'secondary-button' : 'primary-button'} wide">${owned ? text('owned') : text('buy')}</button>
     `;
-  }).join('');
+    const button = card.querySelector('button');
+    button.disabled = owned || locked;
+    button.addEventListener('click', () => buyReward(reward.id));
+    els.rewardList.appendChild(card);
+  });
 }
 
-function renderFriends() {
-  els.friendChat.innerHTML = state.friendMessages.map(message => `
-    <div class="chat-bubble ${message.from === 'me' ? 'me' : ''}">${message.text}</div>
-  `).join('');
+function buyReward(rewardId) {
+  const reward = REWARDS.find(item => item.id === rewardId);
+  if (!reward) return;
+  if (state.rewardsOwned.includes(reward.id)) return;
+  if (state.points < reward.cost) {
+    showToast(text('rewardLocked'));
+    return;
+  }
+  state.points -= reward.cost;
+  state.rewardsOwned.push(reward.id);
+  if (reward.id === 'rw3' && !state.badges.includes('Premium')) {
+    state.badges.push('Premium');
+  }
+  saveState();
+  renderFeed();
+  renderProfile();
+  renderRewards();
+  showToast(text('rewardPurchased'));
+}
 
-  const query = els.friendSearch.value.trim().toLowerCase();
-  const results = FRIEND_POOL.filter(friend => !state.friendIds.includes(friend.id) && (!query || friend.name.toLowerCase().includes(query)));
-  els.friendSearchResults.innerHTML = results.length
-    ? results.map(friend => `
-      <div class="result-row">
-        <div class="friend-row">
-          <div class="result-avatar">${friend.avatar}</div>
-          <div>
-            <strong>${friend.name}</strong>
-            <p>Community member</p>
-          </div>
-        </div>
-        <button class="ghost-btn small" data-add-friend="${friend.id}">Add</button>
-      </div>
-    `).join('')
-    : `<div class="mini-list-item"><span>${state.language === 'ar' ? 'ما فيه نتائج حالياً.' : 'No results right now.'}</span></div>`;
+function openRideRequest(eventId) {
+  const event = getEvent(eventId);
+  if (!event) return;
+  rideEventId = eventId;
+  els.rideTarget.innerHTML = `<div class="simple-item"><strong>${text('rideMeta')}</strong><span>${event.title} • ${event.place}</span></div>`;
+  els.ridePickup.value = '';
+  els.ridePassengers.value = '1';
+  els.rideNotes.value = '';
+  openSheet(els.rideSheet);
+}
+
+function confirmRide() {
+  const event = getEvent(rideEventId);
+  if (!event) return;
+  const names = ['Salem', 'Rashed', 'Mohammed', 'Ali', 'Khaled', 'Noora'];
+  const cars = ['Nissan Patrol', 'Toyota Land Cruiser', 'Toyota Camry', 'Lexus RX'];
+  const eta = 6 + Math.floor(Math.random() * 12);
+  state.rides.unshift({
+    id: `r${Date.now()}`,
+    eventTitle: event.title,
+    destination: event.place,
+    driverName: `${names[Math.floor(Math.random() * names.length)]} • ${cars[Math.floor(Math.random() * cars.length)]}`,
+    eta: `${eta} min`
+  });
+  saveState();
+  renderProfile();
+  closeSheet(els.rideSheet);
+  showToast(formatText('rideConfirmed', { eta }));
+}
+
+function aiReply(userText) {
+  const input = userText.toLowerCase();
+  if (!input.trim()) return text('humaidFallback');
+  if (input.includes('rule') || input.includes('قانون') || input.includes('رجال') || input.includes('نساء') || input.includes('18')) {
+    return text('humaidRules');
+  }
+  if (input.includes('driver') || input.includes('ride') || input.includes('transport') || input.includes('سائق') || input.includes('مواصلات')) {
+    return text('humaidTransport');
+  }
+  if (input.includes('suggest') || input.includes('event') || input.includes('فعال') || input.includes('اقترح') || input.includes('وش')) {
+    const joinable = state.events.filter(event => canJoinEvent(event).ok).slice(0, 4);
+    const summary = joinable.map(event => `• ${event.title} — ${event.place} — ${event.date}`).join('\n');
+    return `${text('humaidSuggest')}\n${summary || text('none')}`;
+  }
+  return text('humaidFallback');
 }
 
 function renderHumaid() {
-  els.humaidChatLog.innerHTML = state.humaidMessages.map(message => `
-    <div class="chat-bubble ${message.role === 'user' ? 'me' : ''}">${message.text}</div>
-  `).join('');
-  els.humaidChatLog.scrollTop = els.humaidChatLog.scrollHeight;
-}
-
-function openSheet(id) {
-  document.getElementById(id).classList.add('open');
-}
-
-function closeSheet(id) {
-  document.getElementById(id).classList.remove('open');
-}
-
-function eventGoogleMapsUrl(eventObj) {
-  return `https://www.google.com/maps/dir/?api=1&destination=${eventObj.lat},${eventObj.lon}`;
-}
-
-function openEventSheet(eventId) {
-  const eventObj = findEvent(eventId);
-  if (!eventObj) return;
-  const joined = state.joinedEventIds.includes(eventObj.id);
-  const access = canJoin(eventObj);
-  els.eventSheetTitle.textContent = eventObj.title;
-  els.eventSheetBody.innerHTML = `
-    <div class="event-detail-grid">
-      <div class="event-detail-card">
-        <div class="pill-row">
-          <span class="pill">${categoryLabel(eventObj.category)}</span>
-          <span class="pill alt">${eventObj.place}</span>
-          ${eventObj.minAge >= 18 ? `<span class="pill">18+</span>` : ''}
-        </div>
-        <p>${eventObj.description}</p>
-        <p>${eventObj.date} • ${eventObj.time}</p>
-        <p>${t('eventSheetMeta')}</p>
-        ${!access.ok ? `<p class="helper-text">${access.reason}</p>` : ''}
-        <div class="sheet-action-row">
-          <button class="sheet-action" data-sheet-action="join" data-id="${eventObj.id}" ${joined || !access.ok ? 'disabled' : ''}>${joined ? t('joined') : t('join')}</button>
-          <button class="sheet-action" data-sheet-action="driver" data-id="${eventObj.id}">${t('requestRide')}</button>
-        </div>
-        <div class="sheet-action-row">
-          <button class="secondary-btn wide" data-sheet-action="directions" data-id="${eventObj.id}">${t('directions')}</button>
-          <button class="secondary-btn wide" data-sheet-close>${t('close')}</button>
-        </div>
-      </div>
-    </div>
-  `;
-  openSheet('event-sheet');
-}
-
-function joinEvent(eventId, showFeedback = true) {
-  const eventObj = findEvent(eventId);
-  if (!eventObj) return;
-  if (state.joinedEventIds.includes(eventId)) {
-    if (showFeedback) showToast(t('alreadyJoined'));
-    return;
-  }
-  const access = canJoin(eventObj);
-  if (!access.ok) {
-    showToast(access.reason);
-    return;
-  }
-  state.joinedEventIds.unshift(eventId);
-  state.points += 10;
-  if (!state.badges.includes('Participant')) state.badges.push('Participant');
-  saveState();
-  renderAll();
-  if (showFeedback) showToast(t('joinSuccess'));
-}
-
-function requestDriver(eventId, showFeedback = true) {
-  const eventObj = findEvent(eventId);
-  if (!eventObj) return;
-  const eta = 6 + Math.floor(Math.random() * 8);
-  const ride = {
-    id: `ride-${Date.now()}`,
-    eventId,
-    eventTitle: eventObj.title,
-    driver: ['Salem', 'Rashed', 'Ali', 'Noora'][Math.floor(Math.random() * 4)],
-    eta
-  };
-  state.rides.unshift(ride);
-  saveState();
-  renderProfile();
-  if (showFeedback) showToast(t('driverConfirmed').replace('{eta}', eta));
-}
-
-function publishEvent() {
-  const title = els.createTitle.value.trim();
-  const location = els.createLocation.value.trim();
-  const description = els.createDescription.value.trim();
-  const date = els.createDate.value.trim() || '24 Jan 2026';
-  const time = els.createTime.value.trim() || '6:00 PM';
-  const category = selectedValue('create-category') || 'family';
-
-  if (!title || !location || !description) {
-    showToast(state.language === 'ar' ? 'كمّل العنوان والموقع والوصف.' : 'Complete title, location, and description.');
-    return;
-  }
-
-  const eventId = `ev-${Date.now()}`;
-  state.events.unshift({
-    id: eventId,
-    title,
-    category,
-    place: location,
-    city: 'Sharjah',
-    date,
-    time,
-    minAge: ['men', 'women'].includes(category) ? 18 : 0,
-    gender: category === 'men' ? 'Male' : category === 'women' ? 'Female' : 'all',
-    description,
-    lat: 25.34,
-    lon: 55.39
+  els.humaidChatLog.innerHTML = '';
+  state.humaidMessages.forEach(message => {
+    const bubble = document.createElement('div');
+    bubble.className = message.role === 'assistant' ? 'ai-bubble' : 'user-bubble';
+    bubble.textContent = message.text;
+    els.humaidChatLog.appendChild(bubble);
   });
-  state.createdEventIds.unshift(eventId);
-  state.points += 25;
-  if (!state.badges.includes('Organizer')) state.badges.push('Organizer');
+}
+
+function sendHumaid() {
+  const prompt = els.humaidInput.value.trim();
+  if (!prompt) return;
+  state.humaidMessages.push({ role: 'user', text: prompt });
+  state.humaidMessages.push({ role: 'assistant', text: aiReply(prompt) });
   saveState();
-  els.createTitle.value = '';
-  els.createLocation.value = '';
-  els.createDescription.value = '';
-  els.createDate.value = '';
-  els.createTime.value = '';
-  activeFilter = 'all';
-  renderAll();
-  showAppPage('feed');
-  showToast(t('eventPublished'));
-}
-
-function addFriend(friendId) {
-  if (!state.friendIds.includes(friendId)) {
-    state.friendIds.push(friendId);
-    saveState();
-    renderFriends();
-    showToast(t('addedFriend'));
-  }
-}
-
-function sendFriendMessage() {
-  const text = els.friendMessage.value.trim();
-  if (!text) return;
-  state.friendMessages.push({ id: `msg-${Date.now()}`, from: 'me', text });
-  els.friendMessage.value = '';
-  saveState();
-  renderFriends();
-}
-
-function inviteFriend() {
-  const eventObj = state.events[0];
-  if (!eventObj) return;
-  const inviteText = state.language === 'ar'
-    ? `تعال معي إلى ${eventObj.title} في ${eventObj.place}.`
-    : `Join me at ${eventObj.title} in ${eventObj.place}.`;
-  state.friendMessages.push({ id: `inv-${Date.now()}`, from: 'me', text: inviteText });
-  saveState();
-  renderFriends();
-  showToast(t('inviteSent'));
-}
-
-function humaidReply(input) {
-  const text = input.toLowerCase();
-  const joinable = state.events.filter(eventObj => canJoin(eventObj).ok).slice(0, 3);
-
-  if (/rule|rules|men|women|18|قانون|رجال|نساء|العمر/.test(text)) {
-    return state.language === 'ar'
-      ? 'القوانين بسيطة: فعاليات الرجال للرجال فقط، وفعاليات النساء للنساء فقط، وإذا كانت الفعالية +18 فالعمر يتحقق تلقائياً من الهوية الرقمية.'
-      : 'Rules are simple: men events are for male users, women events are for female users, and 18+ eligibility is resolved from digital identity.';
-  }
-
-  if (/family|suggest|recommend|event|join|اقتراح|اقترح|فعاليات|انضم/.test(text)) {
-    if (!joinable.length) {
-      return state.language === 'ar'
-        ? 'حالياً ما لقيت فعاليات مناسبة لبياناتك.'
-        : 'I could not find joinable events for your profile right now.';
-    }
-    const summary = joinable.map(eventObj => `${eventObj.title} • ${eventObj.place}`).join(' — ');
-    return state.language === 'ar'
-      ? `أرشح لك هذي الفعاليات: ${summary}`
-      : `I recommend these events: ${summary}`;
-  }
-
-  if (/driver|ride|map|direction|سائق|خريطة|اتجاه/.test(text)) {
-    return state.language === 'ar'
-      ? 'افتح بطاقة الفعالية ثم اختر الاتجاهات أو اطلب سائق.'
-      : 'Open any event card, then choose Directions or Request Driver.';
-  }
-
-  if (/reward|points|badge|نقاط|جائزة|شارة/.test(text)) {
-    return state.language === 'ar'
-      ? `عندك حالياً ${state.points} نقطة، وتقدر تفتح متجر الجوائز من البروفايل.`
-      : `You currently have ${state.points} points, and you can open the rewards store from the profile.`;
-  }
-
-  return state.language === 'ar'
-    ? 'اسألني عن الفعاليات، القوانين، السائق، أو النقاط وأنا أرتبها لك.'
-    : 'Ask me about events, rules, driver requests, or points and I will guide you.';
-}
-
-function sendHumaidMessage() {
-  const text = els.humaidInput.value.trim();
-  if (!text) return;
-  state.humaidMessages.push({ role: 'user', text });
-  state.humaidMessages.push({ role: 'assistant', text: humaidReply(text) });
   els.humaidInput.value = '';
-  saveState();
   renderHumaid();
-}
-
-function saveSettings() {
-  state.language = selectedValue('language') || 'en';
-  state.mapStyle = selectedValue('mapstyle') || 'dark';
-  if (!state.profile.bio || state.profile.bio === UI.en.profileBioDefault || state.profile.bio === UI.ar.profileBioDefault) {
-    state.profile.bio = t('profileBioDefault');
-  }
-  if (state.humaidMessages.length === 1 && state.humaidMessages[0].role === 'assistant') {
-    state.humaidMessages[0].text = t('humaidWelcome');
-  }
-  saveState();
-  applyTheme();
-  renderAll();
-  showToast(t('settingsSaved'));
-  closeSheet('settings-sheet');
+  els.humaidChatLog.scrollTop = els.humaidChatLog.scrollHeight;
 }
 
 function resetDemo() {
   localStorage.removeItem(STORAGE_KEY);
   state = defaultState();
-  els.signinEid.value = '';
-  setGroupValue('create-category', 'family');
-  setGroupValue('language', 'en');
-  setGroupValue('mapstyle', 'dark');
-  applyTheme();
+  activeScreen = 'splash';
+  activePage = 'feed';
+  activeFilter = 'all';
+  selectedCreateCategory = 'family';
+  selectedMapEventId = null;
+  rideEventId = null;
   renderAll();
   showScreen('splash');
-  closeSheet('settings-sheet');
-  showToast(t('resetDone'));
+  showToast(text('resetDone'));
 }
 
 function renderAll() {
-  applyTheme();
+  updateDirectionAndLanguage();
+  showAppPage(activePage);
+  showScreen(activeScreen);
   renderFeed();
   renderMap();
+  renderFriends();
   renderProfile();
   renderRewards();
-  renderFriends();
   renderHumaid();
+  renderSettingsSheet();
+  els.termsCheck.checked = state.termsAccepted;
+  els.termsContinue.disabled = !state.termsAccepted;
+  els.signinEid.value = state.activeIdentity || '';
+  previewIdentity(els.signinEid.value || state.activeIdentity);
 }
 
-function bindEvents() {
+function previewIdentity(rawEid) {
+  const eid = rawEid.trim();
+  const linked = seedFromIdentity(eid || state.activeIdentity);
+  els.identityPreviewName.textContent = eid ? linked.name : text('digitalIdentityLinked');
+  els.identityPreviewMeta.textContent = text('accessResolved');
+}
+
+function attachEvents() {
+  els.flowPills.forEach(button => {
+    button.addEventListener('click', () => showScreen(button.dataset.flowScreen));
+  });
+
+  els.nextButtons.forEach(button => {
+    button.addEventListener('click', () => showScreen(button.dataset.nextScreen));
+  });
+
   els.termsCheck.addEventListener('change', () => {
-    els.termsContinue.disabled = !els.termsCheck.checked;
+    state.termsAccepted = els.termsCheck.checked;
+    saveState();
+    els.termsContinue.disabled = !state.termsAccepted;
   });
 
   els.termsContinue.addEventListener('click', () => {
-    state.termsAccepted = true;
-    saveState();
+    if (!state.termsAccepted) {
+      showToast(text('termsNeeded'));
+      return;
+    }
     showScreen('signin');
   });
 
-  els.signinVerify.addEventListener('click', () => {
+  els.signinEid.addEventListener('input', () => previewIdentity(els.signinEid.value));
+
+  els.signinContinue.addEventListener('click', () => {
     const eid = els.signinEid.value.trim();
     if (!eid) {
-      showToast(t('digitalIdentityRequired'));
+      showToast(text('identityRequired'));
       return;
     }
-    const linked = identityFromEid(eid);
-    state.profile = {
-      name: linked.name,
-      eid: linked.eid,
-      gender: linked.gender,
-      age: linked.age,
-      bio: state.language === 'ar' ? linked.bioAr : linked.bioEn
-    };
-    state.points = linked.points;
-    state.badges = [...new Set(linked.badges)];
-    state.joinedEventIds = [...linked.joinedEventIds];
-    saveState();
-    renderProfile();
-    showToast(t('digitalIdentityLinked'));
+    applyIdentity(eid);
+    previewIdentity(eid);
+    showToast(text('identityLinkedToast'));
     showScreen('otp');
   });
 
   els.otpLogin.addEventListener('click', () => {
     state.signedIn = true;
     saveState();
-    renderAll();
     showScreen('app');
     showAppPage('feed');
   });
 
-  els.jumpButtons.forEach(btn => btn.addEventListener('click', () => {
-    const target = btn.dataset.screen;
-    showScreen(target);
-    if (target === 'app') showAppPage('feed');
-  }));
-
-  els.nextScreenButtons.forEach(btn => btn.addEventListener('click', () => {
-    const target = btn.dataset.nextScreen;
-    showScreen(target);
-  }));
-
-  document.querySelectorAll('.chip-group').forEach(group => {
-    group.addEventListener('click', event => {
-      const button = event.target.closest('.chip-btn');
-      if (!button) return;
-      group.querySelectorAll('.chip-btn').forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-    });
+  els.navButtons.forEach(button => {
+    button.addEventListener('click', () => showAppPage(button.dataset.pageTarget));
   });
 
-  els.tabButtons.forEach(btn => btn.addEventListener('click', () => {
-    showScreen('app');
-    showAppPage(btn.dataset.pageTarget);
-  }));
-
+  els.openHumaid.addEventListener('click', () => showScreen('ai'));
   els.feedSearch.addEventListener('input', renderFeed);
-  els.openHumaid.addEventListener('click', () => showScreen('chat'));
   els.publishEvent.addEventListener('click', publishEvent);
-  els.sendInvite.addEventListener('click', inviteFriend);
-  els.sendFriendMessage.addEventListener('click', sendFriendMessage);
-  els.friendMessage.addEventListener('keydown', event => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      sendFriendMessage();
-    }
-  });
   els.friendSearch.addEventListener('input', renderFriends);
-  els.openSettings.addEventListener('click', () => openSheet('settings-sheet'));
-  els.openRewards.addEventListener('click', () => openSheet('rewards-sheet'));
-  els.saveSettings.addEventListener('click', saveSettings);
+  els.sendInvite.addEventListener('click', sendInvite);
+  els.sendFriendMessage.addEventListener('click', sendFriendMessage);
+  els.openSettings.addEventListener('click', () => openSheet(els.settingsSheet));
+  els.openRewards.addEventListener('click', () => openSheet(els.rewardsSheet));
+  els.saveSettings.addEventListener('click', () => {
+    saveState();
+    closeSheet(els.settingsSheet);
+    showToast(text('languageSaved'));
+  });
   els.resetDemo.addEventListener('click', resetDemo);
-  els.sendHumaid.addEventListener('click', sendHumaidMessage);
+  els.confirmRide.addEventListener('click', confirmRide);
+  els.sendHumaid.addEventListener('click', sendHumaid);
   els.humaidInput.addEventListener('keydown', event => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      sendHumaidMessage();
-    }
+    if (event.key === 'Enter') sendHumaid();
+  });
+  els.friendMessage.addEventListener('keydown', event => {
+    if (event.key === 'Enter') sendFriendMessage();
   });
 
-  els.closeSheetButtons.forEach(btn => btn.addEventListener('click', () => closeSheet(btn.dataset.closeSheet)));
-  document.querySelectorAll('.sheet-backdrop').forEach(backdrop => {
-    backdrop.addEventListener('click', event => {
-      if (event.target === backdrop) backdrop.classList.remove('open');
+  els.closeSheetButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const target = document.getElementById(button.dataset.closeSheet);
+      if (target) closeSheet(target);
     });
   });
 
-  document.addEventListener('click', event => {
-    const filterBtn = event.target.closest('[data-filter]');
-    if (filterBtn) {
-      activeFilter = filterBtn.dataset.filter;
-      renderFeed();
-      return;
-    }
-
-    const pageAction = event.target.closest('[data-action]');
-    if (pageAction) {
-      const { action, id } = pageAction.dataset;
-      if (action === 'join') joinEvent(id);
-      if (action === 'details') openEventSheet(id);
-      if (action === 'driver') requestDriver(id);
-      return;
-    }
-
-    const mapPin = event.target.closest('.map-pin');
-    if (mapPin) {
-      const eventObj = findEvent(mapPin.dataset.eventId);
-      if (eventObj) {
-        els.mapPreview.innerHTML = `<strong>${eventObj.title}</strong><span>${eventObj.place} • ${eventObj.date} • ${eventObj.time}</span>`;
-      }
-      return;
-    }
-
-    const rewardBtn = event.target.closest('[data-buy-reward]');
-    if (rewardBtn) {
-      const rewardId = rewardBtn.dataset.buyReward;
-      const reward = REWARDS.find(item => item.id === rewardId);
-      if (!reward || state.rewardsOwned.includes(rewardId) || state.points < reward.cost) return;
-      state.points -= reward.cost;
-      state.rewardsOwned.push(rewardId);
-      if (rewardId === 'rw3' && !state.badges.includes('Premium')) state.badges.push('Premium');
-      saveState();
-      renderAll();
-      showToast(t('rewardPurchased'));
-      return;
-    }
-
-    const addFriendBtn = event.target.closest('[data-add-friend]');
-    if (addFriendBtn) {
-      addFriend(addFriendBtn.dataset.addFriend);
-      return;
-    }
-
-    const sheetAction = event.target.closest('[data-sheet-action]');
-    if (sheetAction) {
-      const { sheetAction: action, id } = sheetAction.dataset;
-      if (action === 'join') joinEvent(id);
-      if (action === 'driver') requestDriver(id);
-      if (action === 'directions') {
-        const eventObj = findEvent(id);
-        if (eventObj) window.open(eventGoogleMapsUrl(eventObj), '_blank');
-      }
-      return;
-    }
-
-    const closeBtn = event.target.closest('[data-sheet-close]');
-    if (closeBtn) closeSheet('event-sheet');
+  [els.eventSheet, els.rideSheet, els.settingsSheet, els.rewardsSheet].forEach(sheet => {
+    sheet.addEventListener('click', event => {
+      if (event.target === sheet) closeSheet(sheet);
+    });
   });
 }
 
-function boot() {
-  els.signinEid.value = '';
-  setGroupValue('create-category', 'family');
-  setGroupValue('language', state.language);
-  setGroupValue('mapstyle', state.mapStyle);
-  bindEvents();
-  renderAll();
-
-  if (state.signedIn) {
-    showScreen('app');
-    showAppPage('feed');
-  } else if (state.termsAccepted) {
-    showScreen('signin');
-  } else {
-    showScreen('splash');
-  }
-}
-
-boot();
+attachEvents();
+renderAll();

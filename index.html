@@ -10,382 +10,369 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="workspace">
-    <aside class="pitch-panel">
-      <span class="pitch-tag">Competition-ready prototype</span>
-      <h1>Naseej Emirates</h1>
-      <p>
-        Cleaner iPhone-style prototype for GitHub Pages. It keeps the app as a judged demo,
-        not a full product build, while fixing the onboarding logic to match digital identity.
-      </p>
-
-      <div class="pitch-block">
-        <h2>What changed</h2>
-        <ul>
-          <li>Sign up changed into <strong>Digital ID sign in</strong> — no manual name or age entry.</li>
-          <li>Humaid AI is now a proper <strong>chat conversation screen</strong>.</li>
-          <li>Layout is cleaner, less crowded, and closer to an iOS presentation flow.</li>
-        </ul>
+  <div class="stage">
+    <header class="top-strip">
+      <div>
+        <span class="strip-tag">iOS competition prototype</span>
+        <h1>Naseej Emirates</h1>
+        <p>Static GitHub Pages prototype shaped like a mobile app, not a production build.</p>
       </div>
-
-      <div class="pitch-block">
-        <h2>Best demo order</h2>
-        <div class="screen-jumps">
-          <button class="jump-btn active" data-screen="splash">Splash</button>
-          <button class="jump-btn" data-screen="terms">Terms</button>
-          <button class="jump-btn" data-screen="signin">Digital ID</button>
-          <button class="jump-btn" data-screen="otp">OTP</button>
-          <button class="jump-btn" data-screen="app">App</button>
-          <button class="jump-btn" data-screen="chat">Humaid</button>
-        </div>
+      <div class="flow-pills" aria-label="Prototype flow">
+        <button class="flow-pill active" data-flow-screen="splash">Home</button>
+        <button class="flow-pill" data-flow-screen="terms">Terms</button>
+        <button class="flow-pill" data-flow-screen="signin">Digital ID</button>
+        <button class="flow-pill" data-flow-screen="otp">OTP</button>
+        <button class="flow-pill" data-flow-screen="app">App</button>
+        <button class="flow-pill" data-flow-screen="ai">Humaid</button>
       </div>
+    </header>
 
-      <div class="pitch-block compact">
-        <h2>Pitch line</h2>
-        <p>
-          “Naseej Emirates uses digital identity for trusted access, then helps users discover safe,
-          respectful community events with transport, social invites, and AI assistance.”
-        </p>
-      </div>
-    </aside>
-
-    <main class="phone-stage">
-      <div class="iphone">
+    <main class="phone-wrap">
+      <div class="phone-frame">
         <div class="dynamic-island"></div>
-        <div class="screen-shell">
+        <div class="phone-screen" id="phone-screen">
           <div class="status-bar">
             <span>9:41</span>
-            <div class="status-icons"><span></span><span></span><span class="battery"></span></div>
+            <div class="status-icons">
+              <span></span>
+              <span></span>
+              <span class="battery"></span>
+            </div>
           </div>
 
           <section class="screen active" id="screen-splash">
-            <div class="ring ring-top"></div>
-            <div class="ring ring-bottom"></div>
-            <div class="splash-body">
+            <div class="decor-arc arc-top"></div>
+            <div class="decor-arc arc-top arc-top-2"></div>
+            <div class="decor-arc arc-top arc-top-3"></div>
+            <div class="decor-arc arc-bottom"></div>
+            <div class="decor-arc arc-bottom arc-bottom-2"></div>
+            <div class="decor-arc arc-bottom arc-bottom-3"></div>
+
+            <div class="splash-center">
               <div class="brand-mark" aria-hidden="true">
-                <span class="stroke red"></span>
-                <span class="stroke green"></span>
-                <span class="stroke black"></span>
+                <span class="brand-stripe brand-red"></span>
+                <span class="brand-stripe brand-green"></span>
+                <span class="brand-stripe brand-black"></span>
               </div>
-              <h2>Welcome to Naseej Emirates</h2>
-              <p>One Community Woven Together</p>
+              <h2 data-i18n="welcomeTitle">Welcome to Naseej Emirates</h2>
+              <p data-i18n="welcomeSub">One Community Woven Together</p>
             </div>
-            <button class="cta-curved" data-next-screen="terms">Join Us In Naseej Emirates</button>
+
+            <button class="curve-button" data-next-screen="terms" data-i18n="joinUs">Join Us In Naseej Emirates</button>
           </section>
 
           <section class="screen" id="screen-terms">
-            <div class="ring ring-top small"></div>
-            <div class="screen-scroll onboarding-layout">
-              <div class="header-block left">
-                <span class="eyebrow">Before you continue</span>
-                <h3>Terms of Service</h3>
-                <p>Prototype flow only. No real identity verification happens in this demo build.</p>
+            <div class="decor-arc arc-top small"></div>
+            <div class="decor-arc arc-top arc-top-2 small"></div>
+            <div class="decor-arc arc-top arc-top-3 small"></div>
+            <div class="screen-scroll">
+              <button class="text-back" data-next-screen="splash">&lt; <span data-i18n="back">Back</span></button>
+              <div class="header-block">
+                <span class="eyebrow" data-i18n="beforeContinue">Before you continue</span>
+                <h3 data-i18n="termsTitle">Terms of Service</h3>
+                <p data-i18n="termsSub">This is a judged prototype. It demonstrates the concept only, not real identity verification.</p>
               </div>
 
-              <article class="glass-card terms-card">
-                <h4>What the prototype demonstrates</h4>
-                <ul class="plain-list">
-                  <li>Trusted onboarding using UAE digital identity as the main concept.</li>
-                  <li>Community event discovery with category and access rules.</li>
-                  <li>Driver request, friend invites, rewards, and profile flow.</li>
-                  <li>AI assistant support inside the app as a conversation experience.</li>
+              <div class="soft-panel">
+                <h4 data-i18n="termsInside">What this prototype includes</h4>
+                <ul class="bullet-list">
+                  <li data-i18n="termsItem1">Digital identity sign in concept with OTP confirmation.</li>
+                  <li data-i18n="termsItem2">Community event discovery with family, men, women, and kids categories.</li>
+                  <li data-i18n="termsItem3">Access rules, driver request, rewards, settings, and friends chat flow.</li>
+                  <li data-i18n="termsItem4">Humaid AI as an in-app conversation assistant.</li>
                 </ul>
-              </article>
+              </div>
 
               <label class="check-row">
                 <input type="checkbox" id="terms-check" />
-                <span>I accept the terms for this prototype demo.</span>
+                <span data-i18n="termsAccept">I accept the prototype terms.</span>
               </label>
 
-              <div class="dual-actions sticky-actions">
-                <button class="secondary-btn" data-next-screen="splash">Back</button>
-                <button class="primary-btn" id="terms-continue" disabled>Continue</button>
+              <div class="dual-actions">
+                <button class="secondary-button" data-next-screen="splash" data-i18n="back">Back</button>
+                <button class="primary-button" id="terms-continue" disabled data-i18n="continue">Continue</button>
               </div>
             </div>
           </section>
 
           <section class="screen" id="screen-signin">
-            <div class="ring ring-top small"></div>
-            <button class="text-back" data-next-screen="terms">&lt; Back</button>
-            <div class="sheet-panel tall">
-              <h3>Sign in with Digital ID</h3>
-              <p class="helper-text signin-copy">
-                Naseej Emirates uses digital identity as the trusted entry point. Basic profile data is pulled automatically in the real product.
-              </p>
+            <div class="decor-arc arc-top small"></div>
+            <div class="decor-arc arc-top arc-top-2 small"></div>
+            <div class="decor-arc arc-top arc-top-3 small"></div>
+            <div class="screen-scroll compact-top">
+              <button class="text-back" data-next-screen="terms">&lt; <span data-i18n="back">Back</span></button>
+              <div class="onboard-sheet">
+                <h3 data-i18n="signinTitle">Sign in with Digital ID</h3>
+                <p class="helper-text" data-i18n="signinSub">In the real product, name, age, and gender are pulled automatically from digital identity.</p>
 
-              <div class="id-card">
-                <div>
-                  <span class="tiny-label">Connected identity</span>
-                  <strong>UAE Digital Identity</strong>
-                </div>
-                <span class="verified-dot">Verified</span>
-              </div>
-
-              <div class="stack-form compact-form">
-                <label>Emirates ID</label>
-                <input id="signin-eid" type="text" placeholder="784-1990-1234567-1" />
-
-                <div class="auto-pills">
-                  <span class="soft-pill">Name auto-filled</span>
-                  <span class="soft-pill">Age auto-filled</span>
-                  <span class="soft-pill">Gender auto-filled</span>
-                </div>
-
-                <div class="identity-preview">
+                <div class="identity-card">
                   <div>
-                    <span class="preview-label">Profile source</span>
-                    <strong>Digital identity linked</strong>
+                    <span class="tiny-label" data-i18n="connectedIdentity">Connected identity</span>
+                    <strong>UAE Digital Identity</strong>
+                  </div>
+                  <span class="verified-pill" data-i18n="verified">Verified</span>
+                </div>
+
+                <label class="field-label" data-i18n="eidLabel">Emirates ID</label>
+                <input id="signin-eid" class="input-field" type="text" placeholder="784-1990-1234567-1" />
+
+                <div class="hint-pills">
+                  <span data-i18n="autoName">Name auto-filled</span>
+                  <span data-i18n="autoAge">Age auto-filled</span>
+                  <span data-i18n="autoGender">Gender auto-filled</span>
+                </div>
+
+                <div class="identity-preview" id="identity-preview">
+                  <div>
+                    <span class="preview-label" data-i18n="profileSource">Profile source</span>
+                    <strong data-preview-name>Digital identity linked</strong>
                   </div>
                   <div>
-                    <span class="preview-label">Access rules</span>
-                    <strong>Resolved automatically</strong>
+                    <span class="preview-label" data-i18n="accessRules">Access rules</span>
+                    <strong data-preview-meta data-i18n="autoResolved">Resolved automatically</strong>
                   </div>
                 </div>
 
-                <button class="primary-btn wide" id="signin-verify">Continue to OTP</button>
+                <button class="primary-button wide" id="signin-continue" data-i18n="continueOtp">Continue to OTP</button>
               </div>
             </div>
           </section>
 
           <section class="screen" id="screen-otp">
-            <div class="ring ring-top small"></div>
-            <div class="sheet-panel tall centered-sheet otp-sheet">
-              <h3>Verify ID</h3>
-              <p class="otp-label">OTP</p>
-              <div class="otp-grid">
-                <input maxlength="1" inputmode="numeric" value="1" />
-                <input maxlength="1" inputmode="numeric" value="1" />
-                <input maxlength="1" inputmode="numeric" value="1" />
-                <input maxlength="1" inputmode="numeric" value="1" />
-                <input maxlength="1" inputmode="numeric" value="1" />
-                <input maxlength="1" inputmode="numeric" value="1" />
+            <div class="decor-arc arc-top small"></div>
+            <div class="decor-arc arc-top arc-top-2 small"></div>
+            <div class="decor-arc arc-top arc-top-3 small"></div>
+            <div class="screen-scroll compact-top centered-screen">
+              <button class="text-back top-left" data-next-screen="signin">&lt; <span data-i18n="back">Back</span></button>
+              <div class="onboard-sheet centered-sheet">
+                <h3 data-i18n="verifyTitle">Verify ID</h3>
+                <p class="otp-title">OTP</p>
+                <div class="otp-grid">
+                  <input maxlength="1" inputmode="numeric" value="1" />
+                  <input maxlength="1" inputmode="numeric" value="1" />
+                  <input maxlength="1" inputmode="numeric" value="1" />
+                  <input maxlength="1" inputmode="numeric" value="1" />
+                  <input maxlength="1" inputmode="numeric" value="1" />
+                  <input maxlength="1" inputmode="numeric" value="1" />
+                </div>
+                <p class="helper-text centered-text" data-i18n="otpSub">Demo OTP step for the competition flow.</p>
+                <button class="primary-button wide" id="otp-login" data-i18n="login">Login</button>
               </div>
-              <p class="helper-text centered">Demo OTP step for the competition flow.</p>
-              <button class="primary-btn wide" id="otp-login">Login</button>
             </div>
           </section>
 
-          <section class="screen app-screen" id="screen-app">
-            <div class="app-decor">
-              <div class="arc arc-a"></div>
-              <div class="arc arc-b"></div>
-              <div class="arc arc-c"></div>
-            </div>
-
-            <header class="app-topbar">
-              <div>
-                <p class="eyebrow">Prototype</p>
-                <h3 id="app-title">Naseej Emirates</h3>
-              </div>
-              <button class="humaid-fab" id="open-humaid" aria-label="Open Humaid AI">
-                <svg viewBox="0 0 64 64" aria-hidden="true">
-                  <rect x="12" y="18" width="40" height="28" rx="12"></rect>
-                  <circle cx="24" cy="32" r="4" class="eye"></circle>
-                  <circle cx="40" cy="32" r="4" class="eye"></circle>
-                  <path d="M24 41c2 2 4.8 3 8 3s6-1 8-3" fill="none"></path>
-                  <path d="M32 10v8"></path>
-                  <circle cx="32" cy="8" r="5" fill="none"></circle>
-                  <path d="M12 31H7"></path>
-                  <path d="M57 31h-5"></path>
-                </svg>
-              </button>
-            </header>
-
-            <div class="app-pages">
-              <div class="app-page active" data-page="feed">
-                <section class="hero-card compact-hero">
-                  <div>
-                    <span class="mini-tag">Smart matching</span>
-                    <h4>Find trusted community events near you</h4>
-                    <p>Family, men, women, and kids experiences with clear access rules and simple transport support.</p>
-                  </div>
-                  <div class="hero-metrics">
-                    <div><strong id="hero-points">120</strong><span>Points</span></div>
-                    <div><strong>04</strong><span>Categories</span></div>
-                  </div>
-                </section>
-
-                <div class="search-bar">
-                  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.2-4.2"></path></svg>
-                  <input id="feed-search" type="text" placeholder="Search title, place, date, category…" />
+          <section class="screen" id="screen-app">
+            <div class="app-bg-arc arc-left-1"></div>
+            <div class="app-bg-arc arc-left-2"></div>
+            <div class="app-bg-arc arc-left-3"></div>
+            <div class="app-scroll">
+              <header class="app-header">
+                <div>
+                  <span class="eyebrow" data-i18n="appTag">Prototype flow</span>
+                  <h3 id="app-page-title">Naseej Emirates</h3>
                 </div>
+                <button class="humaid-button" id="open-humaid" aria-label="Open Humaid AI">
+                  <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <rect x="12" y="18" width="40" height="28" rx="12"></rect>
+                    <circle cx="24" cy="32" r="4" class="eye"></circle>
+                    <circle cx="40" cy="32" r="4" class="eye"></circle>
+                    <path d="M24 41c2 2 4.8 3 8 3s6-1 8-3" fill="none"></path>
+                    <path d="M32 10v8"></path>
+                    <circle cx="32" cy="8" r="5" fill="none"></circle>
+                    <path d="M12 31H7"></path>
+                    <path d="M57 31h-5"></path>
+                  </svg>
+                </button>
+              </header>
 
-                <div class="filter-row" id="category-filters"></div>
-                <div class="event-list" id="feed-events"></div>
-              </div>
-
-              <div class="app-page" data-page="map">
-                <section class="section-head">
-                  <h4>Map</h4>
-                  <p>Prototype location preview for nearby events.</p>
-                </section>
-
-                <div class="map-card">
-                  <div class="map-canvas" id="map-canvas">
-                    <button class="map-pin pin-a" data-event-id="ev1"></button>
-                    <button class="map-pin pin-b" data-event-id="ev2"></button>
-                    <button class="map-pin pin-c" data-event-id="ev3"></button>
-                    <button class="map-pin pin-d" data-event-id="ev4"></button>
-                  </div>
-                  <div class="map-preview" id="map-preview"></div>
-                </div>
-
-                <div class="mini-panel">
-                  <h5>Nearby events</h5>
-                  <div id="map-event-list"></div>
-                </div>
-              </div>
-
-              <div class="app-page" data-page="create">
-                <section class="section-head">
-                  <h4>Create Event</h4>
-                  <p>Publish a new community event as part of the demo flow.</p>
-                </section>
-
-                <div class="form-card-soft">
-                  <label>Event title</label>
-                  <input id="create-title" type="text" placeholder="Neighborhood Gathering" />
-
-                  <label>Category</label>
-                  <div class="chip-group wrap" data-group="create-category">
-                    <button class="chip-btn active" type="button" data-value="family">Family</button>
-                    <button class="chip-btn" type="button" data-value="men">Men</button>
-                    <button class="chip-btn" type="button" data-value="women">Women</button>
-                    <button class="chip-btn" type="button" data-value="kids">Kids</button>
-                  </div>
-
-                  <div class="split-row two">
+              <div class="app-pages">
+                <div class="app-page active" data-page="feed">
+                  <section class="hero-panel">
                     <div>
-                      <label>Date</label>
-                      <input id="create-date" type="text" placeholder="20 Jan 2026" />
+                      <span class="mini-chip" data-i18n="smartMatching">Smart matching</span>
+                      <h4 data-i18n="heroTitle">Find trusted community events near you</h4>
+                      <p data-i18n="heroSub">Family, men, women, and kids experiences with clear rules and transport support.</p>
                     </div>
-                    <div>
-                      <label>Time</label>
-                      <input id="create-time" type="text" placeholder="6:30 PM" />
+                    <div class="hero-stats">
+                      <div><strong id="hero-points">120</strong><span data-i18n="points">Points</span></div>
+                      <div><strong>04</strong><span data-i18n="categoriesLabel">Categories</span></div>
                     </div>
-                  </div>
+                  </section>
 
-                  <label>Location</label>
-                  <input id="create-location" type="text" placeholder="Al Majaz Waterfront" />
-
-                  <label>Description</label>
-                  <textarea id="create-description" rows="4" placeholder="A short, welcoming description for the event."></textarea>
-
-                  <button class="primary-btn wide" id="publish-event">Publish Event</button>
-                </div>
-              </div>
-
-              <div class="app-page" data-page="friends">
-                <section class="section-head">
-                  <h4>Friends</h4>
-                  <p>Add people, invite them, and chat inside the prototype.</p>
-                </section>
-
-                <div class="friend-card">
-                  <div class="search-bar slim">
+                  <div class="search-field-wrap">
                     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.2-4.2"></path></svg>
-                    <input id="friend-search" type="text" placeholder="Search a friend by name" />
+                    <input id="feed-search" class="input-inline" type="text" placeholder="Search title, place, date, category…" />
                   </div>
-                  <div id="friend-search-results" class="friend-results"></div>
-                  <button class="secondary-btn wide" id="send-invite">Send Event Invite</button>
+
+                  <div class="chip-row" id="feed-filters"></div>
+                  <div class="event-stack" id="feed-events"></div>
                 </div>
 
-                <div class="friend-chat-card">
-                  <div class="chat-mini-head">
-                    <div class="friend-avatar">A</div>
-                    <div>
-                      <strong>Ahmed</strong>
-                      <p>Community friend</p>
+                <div class="app-page" data-page="map">
+                  <section class="section-head">
+                    <h4 data-i18n="mapTitle">Map</h4>
+                    <p data-i18n="mapSub">Tap a pin to preview an event and open directions.</p>
+                  </section>
+                  <div class="map-card">
+                    <div class="map-dots"></div>
+                    <div id="map-pins" class="map-pins"></div>
+                  </div>
+                  <div class="map-selected-card" id="map-selected-card"></div>
+                  <div class="event-mini-list" id="map-event-list"></div>
+                </div>
+
+                <div class="app-page" data-page="create">
+                  <section class="section-head">
+                    <h4 data-i18n="createTitle">Create event</h4>
+                    <p data-i18n="createSub">Publish a new event as a prototype flow and earn points.</p>
+                  </section>
+                  <div class="soft-panel form-panel">
+                    <label class="field-label" data-i18n="eventTitle">Event title</label>
+                    <input id="create-title" class="input-field" type="text" placeholder="Neighborhood Gathering" />
+
+                    <label class="field-label" data-i18n="categoryLabel">Category</label>
+                    <div class="chip-row create-categories" id="create-categories"></div>
+                    <p class="helper-text" id="create-rule-note"></p>
+
+                    <div class="double-grid">
+                      <div>
+                        <label class="field-label" data-i18n="dateLabel">Date</label>
+                        <input id="create-date" class="input-field" type="date" />
+                      </div>
+                      <div>
+                        <label class="field-label" data-i18n="timeLabel">Time</label>
+                        <input id="create-time" class="input-field" type="text" placeholder="6:30 PM" />
+                      </div>
+                    </div>
+
+                    <label class="field-label" data-i18n="locationLabel">Location</label>
+                    <input id="create-location" class="input-field" type="text" placeholder="Al Majaz Waterfront" />
+
+                    <label class="field-label" data-i18n="descriptionLabel">Description</label>
+                    <textarea id="create-description" class="input-field textarea-field" rows="4" placeholder="A short, welcoming description for the event."></textarea>
+
+                    <button class="primary-button wide" id="publish-event" data-i18n="publishEvent">Publish event</button>
+                  </div>
+                </div>
+
+                <div class="app-page" data-page="friends">
+                  <section class="section-head">
+                    <h4 data-i18n="friendsTitle">Friends</h4>
+                    <p data-i18n="friendsSub">Add by name, send event invites, and chat inside the prototype.</p>
+                  </section>
+
+                  <div class="soft-panel friend-panel">
+                    <div class="chip-row" id="friend-chips"></div>
+                    <div class="search-field-wrap slim-search">
+                      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+                      <input id="friend-search" class="input-inline" type="text" placeholder="Search a friend by name" />
+                    </div>
+                    <div class="friend-results" id="friend-results"></div>
+                    <div class="invite-row">
+                      <select id="invite-event-select" class="input-field select-field"></select>
+                      <button class="secondary-button" id="send-invite" data-i18n="sendInvite">Send invite</button>
                     </div>
                   </div>
-                  <div id="friend-chat" class="mini-chat-log"></div>
-                  <div class="message-composer">
-                    <input id="friend-message" type="text" placeholder="Type a message…" />
-                    <button class="primary-mini" id="send-friend-message">Send</button>
-                  </div>
-                </div>
-              </div>
 
-              <div class="app-page" data-page="profile">
-                <div class="profile-top-actions">
-                  <button class="icon-box" id="open-settings" aria-label="Open settings">⚙️</button>
-                  <button class="icon-box" id="open-rewards" aria-label="Open rewards">🎁</button>
-                </div>
-
-                <div class="profile-card main-profile-card">
-                  <div class="profile-header">
-                    <div class="profile-avatar" id="profile-avatar">NU</div>
-                    <div>
-                      <h4 id="profile-name">Nasser User</h4>
-                      <p id="profile-eid">Emirates ID linked</p>
+                  <div class="soft-panel chat-panel">
+                    <div class="chat-head">
+                      <div class="friend-avatar" id="chat-friend-avatar">A</div>
+                      <div>
+                        <strong id="chat-friend-name">Ahmed</strong>
+                        <p data-i18n="communityFriend">Community friend</p>
+                      </div>
+                    </div>
+                    <div class="mini-chat" id="friend-chat-log"></div>
+                    <div class="message-row">
+                      <input id="friend-message" class="input-inline" type="text" placeholder="Type a message…" />
+                      <button class="primary-mini" id="send-friend-message" data-i18n="send">Send</button>
                     </div>
                   </div>
-                  <p id="profile-bio">Designing for connection and community.</p>
-                  <div class="stat-grid" id="profile-stats"></div>
                 </div>
 
-                <div class="mini-panel">
-                  <h5>Badges</h5>
-                  <div class="badge-row" id="badge-row"></div>
-                </div>
+                <div class="app-page" data-page="profile">
+                  <div class="profile-actions">
+                    <button class="icon-box" id="open-settings" aria-label="Open settings">⚙️</button>
+                    <button class="icon-box" id="open-rewards" aria-label="Open rewards">🎁</button>
+                  </div>
 
-                <div class="mini-panel">
-                  <h5>Joined events</h5>
-                  <div id="joined-list"></div>
-                </div>
+                  <div class="soft-panel profile-main">
+                    <div class="profile-head">
+                      <div class="profile-avatar" id="profile-avatar">NA</div>
+                      <div>
+                        <h4 id="profile-name">Nasser</h4>
+                        <p id="profile-meta">Digital identity linked</p>
+                      </div>
+                    </div>
+                    <p class="profile-bio" id="profile-bio">Designing for connection and community.</p>
+                    <div class="stats-grid" id="profile-stats"></div>
+                  </div>
 
-                <div class="mini-panel">
-                  <h5>Driver requests</h5>
-                  <div id="rides-list"></div>
+                  <div class="soft-panel">
+                    <h5 data-i18n="badgesTitle">Badges</h5>
+                    <div class="badge-row" id="badge-row"></div>
+                  </div>
+
+                  <div class="soft-panel">
+                    <h5 data-i18n="joinedEvents">Joined events</h5>
+                    <div class="simple-list" id="joined-list"></div>
+                  </div>
+
+                  <div class="soft-panel">
+                    <h5 data-i18n="createdEvents">Created events</h5>
+                    <div class="simple-list" id="created-list"></div>
+                  </div>
+
+                  <div class="soft-panel">
+                    <h5 data-i18n="ridesTitle">Driver requests</h5>
+                    <div class="simple-list" id="rides-list"></div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <nav class="bottom-nav">
-              <button class="tab-item active" data-page-target="feed">
-                <span>⌂</span>
-                <small>Home</small>
+            <nav class="oval-nav" aria-label="App navigation">
+              <button class="nav-icon active" data-page-target="feed" aria-label="Home">
+                <svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20H4z"></path></svg>
               </button>
-              <button class="tab-item" data-page-target="map">
-                <span>⌖</span>
-                <small>Map</small>
+              <button class="nav-icon" data-page-target="map" aria-label="Map">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.2-4.2"></path></svg>
               </button>
-              <button class="tab-item plus-tab" data-page-target="create">
-                <span>＋</span>
-                <small>Create</small>
+              <button class="nav-icon nav-plus" data-page-target="create" aria-label="Create">
+                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M12 7v10M7 12h10"></path></svg>
               </button>
-              <button class="tab-item" data-page-target="friends">
-                <span>👥</span>
-                <small>Friends</small>
+              <button class="nav-icon" data-page-target="friends" aria-label="Friends">
+                <svg viewBox="0 0 24 24"><path d="M8 13a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm8 1a4 4 0 1 1 0-8 4 4 0 0 1 0 8ZM3 20c1-3 3.5-4.5 6.5-4.5 2.7 0 4.8 1 6 3"></path><path d="M12.5 18c1.2-1.5 3-2.5 5.5-2.5 1.4 0 2.2.2 3 .7"></path></svg>
               </button>
-              <button class="tab-item" data-page-target="profile">
-                <span>◯</span>
-                <small>Profile</small>
+              <button class="nav-icon" data-page-target="profile" aria-label="Profile">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 20a8 8 0 0 1 15 0"></path></svg>
               </button>
             </nav>
           </section>
 
-          <section class="screen chat-screen" id="screen-chat">
-            <div class="ring ring-top small"></div>
-            <header class="chat-header-bar">
-              <button class="back-circle" data-next-screen="app">‹</button>
-              <div>
-                <p class="eyebrow">Assistant</p>
-                <h4>Humaid AI</h4>
+          <section class="screen" id="screen-ai">
+            <div class="decor-arc arc-top small"></div>
+            <div class="decor-arc arc-top arc-top-2 small"></div>
+            <div class="decor-arc arc-top arc-top-3 small"></div>
+            <div class="screen-scroll compact-top">
+              <header class="ai-header">
+                <button class="back-circle" data-next-screen="app">‹</button>
+                <div>
+                  <span class="eyebrow" data-i18n="assistant">Assistant</span>
+                  <h4 data-i18n="humaidTitle">Humaid AI</h4>
+                </div>
+              </header>
+
+              <div class="soft-panel ai-intro">
+                <strong data-i18n="humaidTitle">Humaid AI</strong>
+                <p data-i18n="humaidIntro">Ask about events, rules, categories, or transport. This is a prototype conversation flow.</p>
               </div>
-            </header>
 
-            <div class="chat-screen-body">
-              <div class="chat-intro-card">
-                <strong>Humaid AI</strong>
-                <p>Ask about events, rules, categories, or transport. This is a prototype conversation flow.</p>
-              </div>
+              <div class="ai-chat-log" id="humaid-chat-log"></div>
 
-              <div class="chat-thread" id="humaid-chat-log"></div>
-
-              <div class="chat-composer sticky-composer">
-                <input id="humaid-input" type="text" placeholder="Ask Humaid about events, rules, or suggestions…" />
-                <button class="primary-mini" id="send-humaid">Send</button>
+              <div class="message-row sticky-bottom">
+                <input id="humaid-input" class="input-inline" type="text" placeholder="Ask Humaid about events, rules, or suggestions…" />
+                <button class="primary-mini" id="send-humaid" data-i18n="send">Send</button>
               </div>
             </div>
           </section>
@@ -396,56 +383,76 @@
 
   <div class="sheet-backdrop" id="event-sheet">
     <div class="bottom-sheet">
-      <div class="grab"></div>
-      <div class="sheet-heading">
-        <h4 id="sheet-event-title">Event details</h4>
+      <div class="sheet-grab"></div>
+      <div class="sheet-head">
+        <h4 id="event-sheet-title">Event details</h4>
         <button class="close-sheet" data-close-sheet="event-sheet">✕</button>
       </div>
       <div class="sheet-body" id="event-sheet-body"></div>
     </div>
   </div>
 
+  <div class="sheet-backdrop" id="ride-sheet">
+    <div class="bottom-sheet">
+      <div class="sheet-grab"></div>
+      <div class="sheet-head">
+        <h4 data-i18n="rideTitle">Request driver</h4>
+        <button class="close-sheet" data-close-sheet="ride-sheet">✕</button>
+      </div>
+      <div class="sheet-body stacked-gap">
+        <div class="ride-target" id="ride-target"></div>
+        <div>
+          <label class="field-label" data-i18n="pickupLabel">Pickup location</label>
+          <input id="ride-pickup" class="input-field" type="text" placeholder="Home / University / Mall" />
+        </div>
+        <div>
+          <label class="field-label" data-i18n="passengersLabel">Passengers</label>
+          <input id="ride-passengers" class="input-field" type="number" min="1" max="7" value="1" />
+        </div>
+        <div>
+          <label class="field-label" data-i18n="rideNotes">Notes</label>
+          <textarea id="ride-notes" class="input-field textarea-field" rows="3" placeholder="Any notes for the driver"></textarea>
+        </div>
+        <button class="primary-button wide" id="confirm-ride" data-i18n="confirmRide">Confirm driver request</button>
+      </div>
+    </div>
+  </div>
+
   <div class="sheet-backdrop" id="settings-sheet">
     <div class="bottom-sheet">
-      <div class="grab"></div>
-      <div class="sheet-heading">
-        <h4>Settings</h4>
+      <div class="sheet-grab"></div>
+      <div class="sheet-head">
+        <h4 data-i18n="settingsTitle">Settings</h4>
         <button class="close-sheet" data-close-sheet="settings-sheet">✕</button>
       </div>
-      <div class="sheet-body stacked">
-        <div class="sheet-inner">
-          <label>Language</label>
-          <div class="chip-group" data-group="language">
-            <button class="chip-btn active" type="button" data-value="en">English</button>
-            <button class="chip-btn" type="button" data-value="ar">العربية</button>
-          </div>
-
-          <label>Map Style</label>
-          <div class="chip-group" data-group="mapstyle">
-            <button class="chip-btn active" type="button" data-value="dark">Dark</button>
-            <button class="chip-btn" type="button" data-value="light">Light</button>
-          </div>
-
-          <button class="primary-btn wide" id="save-settings">Save Changes</button>
-          <button class="secondary-btn wide" id="reset-demo">Reset Demo Data</button>
+      <div class="sheet-body stacked-gap">
+        <div>
+          <label class="field-label" data-i18n="languageLabel">Language</label>
+          <div class="chip-row settings-row" id="language-chips"></div>
         </div>
+        <div>
+          <label class="field-label" data-i18n="mapStyleLabel">Map style</label>
+          <div class="chip-row settings-row" id="mapstyle-chips"></div>
+        </div>
+        <button class="primary-button wide" id="save-settings" data-i18n="saveChanges">Save changes</button>
+        <button class="secondary-button wide" id="reset-demo" data-i18n="resetDemo">Reset demo data</button>
       </div>
     </div>
   </div>
 
   <div class="sheet-backdrop" id="rewards-sheet">
     <div class="bottom-sheet tall-sheet">
-      <div class="grab"></div>
-      <div class="sheet-heading">
-        <h4>Rewards Store</h4>
+      <div class="sheet-grab"></div>
+      <div class="sheet-head">
+        <h4 data-i18n="rewardsTitle">Rewards Store</h4>
         <button class="close-sheet" data-close-sheet="rewards-sheet">✕</button>
       </div>
-      <div class="sheet-body stacked">
+      <div class="sheet-body stacked-gap">
         <div class="reward-header">
-          <span>Available Points</span>
+          <span data-i18n="availablePoints">Available points</span>
           <strong id="reward-points">120</strong>
         </div>
-        <div id="reward-list" class="reward-list"></div>
+        <div class="reward-list" id="reward-list"></div>
       </div>
     </div>
   </div>
