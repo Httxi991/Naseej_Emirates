@@ -1,20 +1,15 @@
-# Naseej Emirates — Mobile Competition Prototype
+# Naseej Emirates — Mobile Ready Prototype
 
-Static mobile-first prototype for GitHub Pages.
+This version is tuned to work better on mobile browsers and GitHub Pages.
 
-## Files
-- `index.html`
-- `styles.css`
-- `script.js`
+Changes:
+- Better mobile viewport and safe-area handling
+- Full-width mobile layout
+- Improved bottom navigation spacing
+- Smaller but clearer Humaid button
+- Better OTP sizing on narrow screens
+- Better bottom-sheet behavior for AI chat
+- No restart button
+- Settings and Rewards accessible from Profile
 
-## Highlights
-- Digital ID sign-in flow
-- Improved OTP interaction
-- Home / Map / Create / Friends / Profile
-- Settings page from Profile
-- Rewards Store page from Profile
-- Humaid AI bottom button and chat sheet
-- Mobile-first layout with localStorage demo state
-
-## Deploy to GitHub Pages
-Upload the folder to a GitHub repository and enable Pages from the main branch.
+Open `index.html` or deploy the folder to GitHub Pages.
